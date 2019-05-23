@@ -4,9 +4,11 @@ import { ILoginFormProps } from './interfaces'
 
 const LoginFormFields: React.FC<ILoginFormProps> = ({username, password, setUsername, setPassword}) => {
     return (
-        <form onSubmit={ (e: any) => {
+        <form onSubmit={ async (e: any) => {
             e.preventDefault()
             console.log(username, password)
+            setUsername('')
+            setPassword('')
         } }>
             <div className='form-group'>
                 <label>username:</label>
