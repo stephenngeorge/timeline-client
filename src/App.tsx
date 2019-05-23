@@ -1,8 +1,9 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 // import child components
 import { Login } from './Components/Forms'
+import { Dashboard } from './Components/Pages'
 
 const App: React.FC = () => {
   return (
@@ -10,8 +11,10 @@ const App: React.FC = () => {
       <div className="App">
 
         <Route path='/' exact render={ () => {
-          return <Login />
+          const loggedIn = localStorage.getItem('token')
+          return loggedIn ? <Redirect to='/dashboard' /> : <Login />
         } } />
+        <Route path='/dashboard' component={ Dashboard } />
       </div>
     </Router>
   )

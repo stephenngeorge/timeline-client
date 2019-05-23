@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../../store'
 
 import { ILoginFormProps } from './interfaces'
+import { authQueries } from '../../../queries'
 
-const LoginFormFields: React.FC<ILoginFormProps> = ({username, password, setUsername, setPassword}) => {
+const LoginFormFields: React.FC<ILoginFormProps> = props => {
+    const {
+        username,
+        password,
+        setUsername,
+        setPassword
+    } = props
+
+    const { authState, dispatch } = useContext(AuthContext)
+
+    const handleSubmit = async () => {
+        const loginData = await authQueries.login(username, password)
+        dispatch({
+            type: "LOGIN",
+            payload: loginData
+        })
+    }
+
+    console.log(authState)
     return (
         <form onSubmit={ async (e: any) => {
             e.preventDefault()
-            console.log(username, password)
+            handleSubmit()
             setUsername('')
             setPassword('')
         } }>
