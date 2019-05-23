@@ -22,7 +22,6 @@ const LoginFormFields: React.FC<ILoginFormProps> = props => {
         })
     }
 
-    console.log(authState)
     return (
         <form onSubmit={ async (e: any) => {
             e.preventDefault()

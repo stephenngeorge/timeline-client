@@ -12,7 +12,7 @@ const App: React.FC = () => {
 
         <Route path='/' exact render={ () => {
           const loggedIn = localStorage.getItem('token')
-          return loggedIn ? <Redirect to='/dashboard' /> : <Login />
+          return !!loggedIn ? <Redirect to='/dashboard' /> : <Login />
         } } />
         <Route path='/dashboard' component={ Dashboard } />
       </div>
