@@ -11,7 +11,10 @@ export const login = async (username: string, password: string): Promise<any> =>
             password: password
         })
     })
+    // parse response object
     const response = await loginData.json()
+    // save token value to localstorage
     localStorage.setItem('token', response.token)
+    
     return response
 }

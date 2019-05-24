@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import * as types from './types'
 
 interface IAction {
     type: string,
@@ -12,7 +13,7 @@ export default () => {
         const { type, payload } = action
 
         switch(type) {
-            case 'LOGIN':
+            case types.LOGIN:
                 return setAuthState({...payload})
             default:
                 return {...authState}
