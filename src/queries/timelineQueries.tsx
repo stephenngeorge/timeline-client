@@ -4,7 +4,7 @@ import { url } from './config'
 export const fetchTimeline = async (timelineId: string) => {
     const timeline = await fetch(`${url}/timelines/${timelineId}`, {
         headers: {
-            "Authroization": `Bearer ${localStorage.getItem('token')}`
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
     })
     // parse response

@@ -15,7 +15,7 @@ export interface ITimeline {
     updated_at: string!,
     created_at: string!,
     tags: string[],
-    author: IUser,
+    author: string,
     members: IUser[]
 }
 

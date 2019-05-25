@@ -7,7 +7,6 @@ interface ITimelineThumbnailProps {
 }
 
 const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
-    console.log(timelines)
     return (
         <ul>
             {
