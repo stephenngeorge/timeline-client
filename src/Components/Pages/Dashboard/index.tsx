@@ -8,6 +8,7 @@ import { AddTimeline } from '../../Forms'
 import { IDashboardProps } from '../../../interfaces'
 
 const Dashboard: React.FC<IDashboardProps> = ({user}) => {
+    console.log(user)
     return (
         <div>
             <h2>{ user.username }</h2>
