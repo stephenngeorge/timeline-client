@@ -7,7 +7,12 @@ interface IAction {
 }
 
 export default () => {
-    const [authState, setAuthState] = useState({token: ''})
+    const initialState = {
+        token: '',
+        data: {}
+    }
+
+    const [authState, setAuthState] = useState(initialState)
 
     const dispatch = (action: IAction) => {
         const { type, payload } = action
@@ -16,8 +21,7 @@ export default () => {
             case types.LOGIN:
                 return setAuthState({...payload})
             case types.LOGOUT:
-                localStorage.removeItem('token')
-                return setAuthState({token: ''})
+                return setAuthState(initialState)
             default:
                 return {...authState}
         }

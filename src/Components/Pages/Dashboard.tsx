@@ -1,6 +1,11 @@
 import React from 'react'
 
-const Dashboard: React.FC = () => {
+interface IDashboardProps {
+    user: object
+}
+
+const Dashboard: React.FC<IDashboardProps> = props => {
+    console.log(props)
     return (
         <div>DASHBOARD</div>
     )

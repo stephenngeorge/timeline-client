@@ -5,7 +5,7 @@ import { authQueries } from '../../../queries'
 
 const LoginForm: React.FC = () => {
 
-    const { authState, dispatch } = useContext(AuthContext)
+    const { dispatch } = useContext(AuthContext)
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')

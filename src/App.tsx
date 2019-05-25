@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
-// import utils
-import { authUtils } from './utils'
+import { AuthContext } from './store'
 
 // import child components
 import { Nav } from './Components/Globals'
@@ -10,17 +9,18 @@ import { Login } from './Components/Forms'
 import { Dashboard } from './Components/Pages'
 
 const App: React.FC = () => {
+  const { authState } = useContext(AuthContext)
+
   return (
     <Router>
       <div className="App">
         <Nav />
         
         <Route path='/' exact render={ () => {
-          const loggedIn = localStorage.getItem('token')
-          return !!loggedIn ? <Redirect to='/dashboard' /> : <Login />
+          return authState.token.length > 0 ? <Redirect to='/dashboard' /> : <Login />
         } } />
         <Route path='/dashboard' render={ () => {
-          return authUtils.protectRoute() ? <Dashboard /> : <Redirect to='/' />
+          return authState.token.length > 0 ? <Dashboard user={ authState.data } /> : <Redirect to='/' />
         } } />
       </div>
     </Router>
