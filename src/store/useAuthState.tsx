@@ -15,6 +15,9 @@ export default () => {
         switch(type) {
             case types.LOGIN:
                 return setAuthState({...payload})
+            case types.LOGOUT:
+                localStorage.removeItem('token')
+                return setAuthState({token: ''})
             default:
                 return {...authState}
         }
