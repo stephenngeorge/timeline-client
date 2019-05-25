@@ -9,6 +9,7 @@ export interface INode {
 
 export interface ITimeline {
     title: string!,
+    _id: string!,
     description: string!,
     nodes: INode[]!,
     updated_at: string!,

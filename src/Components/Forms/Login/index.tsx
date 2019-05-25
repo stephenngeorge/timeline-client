@@ -21,18 +21,24 @@ const LoginForm: React.FC = () => {
     return (
         <form onSubmit={ async (e: any) => {
             e.preventDefault()
-            handleSubmit()
-            setUsername('')
-            setPassword('')
+            await handleSubmit()
         } }>
             <div className='form-group'>
                 <label>username:</label>
-                <input type='text' name='username' value={ username } onChange={ (e: any) => setUsername(e.target.value) } />
+                <input  type='text'
+                        name='username'
+                        value={ username }
+                        onChange={ (e: any) => setUsername(e.target.value) }
+                />
             </div>
 
             <div className='form-group'>
                 <label>password:</label>
-                <input type='password' name='password' value={ password } onChange={ (e:any) => setPassword(e.target.value) } />
+                <input  type='password'
+                        name='password'
+                        value={ password }
+                        onChange={ (e:any) => setPassword(e.target.value) }
+                />
             </div>
 
             <button type='submit'>login</button>
