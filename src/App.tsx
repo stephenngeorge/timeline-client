@@ -6,7 +6,7 @@ import { AuthContext } from './store'
 // import child components
 import { Layout } from './Components/Globals'
 import { Login } from './Components/Forms'
-import { Dashboard } from './Components/Pages'
+import { Dashboard, Timeline } from './Components/Pages'
 
 const App: React.FC = () => {
   const { authState } = useContext(AuthContext)
@@ -21,6 +21,7 @@ const App: React.FC = () => {
         <Route path='/dashboard' render={ () => {
           return authState.token.length > 0 ? <Dashboard user={ authState.data } /> : <Redirect to='/' />
         } } />
+        <Route path='/timeline/:id' component={ Timeline } />
       </Layout>
     </Router>
   )
