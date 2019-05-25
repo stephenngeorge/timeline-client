@@ -1,15 +1,22 @@
 import { useState } from 'react'
 import * as types from './types'
 
-interface IAction {
-    type: string,
-    payload?: any
-}
+import { IUser, IAction, IAuthState } from '../interfaces'
 
 export default () => {
-    const initialState = {
+    const data: IUser = {
+        username: '',
+        _id: '',
+        created_at: '',
+        updated_at: '',
+        timelines: []
+    }
+
+    const initialState: IAuthState = {
         token: '',
-        data: {}
+        data,
+        message: '',
+        type: ''
     }
 
     const [authState, setAuthState] = useState(initialState)
