@@ -5,7 +5,8 @@ export interface INode {
     status: string!,
     timeline: ITimeline!,
     updated_at: string!,
-    created_at: string!
+    created_at: string!,
+    deadline?: string
 }
 
 export interface ITimeline {
@@ -17,7 +18,8 @@ export interface ITimeline {
     created_at: string!,
     tags: string[],
     author: string,
-    members: IUser[]
+    members: IUser[],
+    deadline?: string
 }
 
 export interface IUser {
