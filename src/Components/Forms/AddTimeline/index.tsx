@@ -11,9 +11,8 @@ const AddTimeline: React.FC = () => {
 
     const handleSubmit = async () => {
         const timeline = await timelineQueries.addTimeline(title, description)
-        console.log(timeline)
         dispatch({
-            type: types.ADDTIMELINE,
+            type: types.ADD_TIMELINE,
             payload: timeline.data
         })
     }
@@ -26,18 +25,20 @@ const AddTimeline: React.FC = () => {
             setDescription('')
         } }>
             <div className='form-group'>
-                <label>title:</label>
+                <label htmlFor='title'>title:</label>
                 <input  type='text'
                         name='title'
+                        id='title'
                         value={ title }
                         onChange={ (e: any) => setTitle(e.target.value) }
                 />
             </div>
 
             <div className='form-group'>
-                <label>description:</label>
+                <label htmlFor='description'>description:</label>
                 <input  type='text'
                         name='description'
+                        id='description'
                         value={ description }
                         onChange={ (e: any) => setDescription(e.target.value) }
                 />

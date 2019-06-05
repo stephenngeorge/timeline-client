@@ -29,8 +29,10 @@ export default () => {
                 return setAuthState({...payload})
             case types.LOGOUT:
                 return setAuthState(initialState)
-            case types.ADDTIMELINE:
+            case types.ADD_TIMELINE:
                 return setAuthState({...authState, data: {...authState.data, timelines: [...authState.data.timelines, payload]}})
+            case types.ADD_NODE:
+                return {...authState}
             default:
                 return {...authState}
         }

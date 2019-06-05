@@ -24,18 +24,20 @@ const LoginForm: React.FC = () => {
             await handleSubmit()
         } }>
             <div className='form-group'>
-                <label>username:</label>
+                <label htmlFor='username'>username:</label>
                 <input  type='text'
                         name='username'
+                        id='username'
                         value={ username }
                         onChange={ (e: any) => setUsername(e.target.value) }
                 />
             </div>
 
             <div className='form-group'>
-                <label>password:</label>
+                <label htmlFor='password'>password:</label>
                 <input  type='password'
                         name='password'
+                        id='password'
                         value={ password }
                         onChange={ (e:any) => setPassword(e.target.value) }
                 />
