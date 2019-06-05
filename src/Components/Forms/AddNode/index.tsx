@@ -14,7 +14,7 @@ const AddNode: React.FC<IAddNodeProps> = ({timelineId, fetchTimeline}) => {
     const [description, setDescription] = useState('')
 
     const handleSubmit = async () => {
-        const node = await nodeQueries.addNode(title, description, timelineId)
+        await nodeQueries.addNode(title, description, timelineId)
         dispatch({ type: types.ADD_NODE })
     }
 
