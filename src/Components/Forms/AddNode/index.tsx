@@ -3,16 +3,20 @@ import React, { useState } from 'react'
 import { nodeQueries } from '../../../queries'
 
 interface IAddNodeProps {
-    timelineId: string
+    timelineId: string,
+    fetchTimeline: (id: string) => void
 }
-const AddNode: React.FC<IAddNodeProps> = ({timelineId}) => {
+const AddNode: React.FC<IAddNodeProps> = ({timelineId, fetchTimeline}) => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
 
     return (
-        <form onSubmit={ e => {
+        <form onSubmit={ async e => {
             e.preventDefault()
-            nodeQueries.addNode(title, description, timelineId)
+            await nodeQueries.addNode(title, description, timelineId)
+            setTitle('')
+            setDescription('')
+            await fetchTimeline(timelineId)
         } }>
             <div className='form-group'>
                 <label>title:</label>

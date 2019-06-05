@@ -32,14 +32,13 @@ const Timeline: React.FC<RouteComponentProps<IParams>> = ({match}) => {
         fetchTimeline(match.params.id)
     }, [match.params.id])
 
-    console.log(timeline)
     return (
         <div>
             <h3>{ timeline.title }</h3>
-            <AddNode timelineId={ match.params.id } />
+            <AddNode timelineId={ match.params.id } fetchTimeline={ fetchTimeline } />
             {
                 timeline.nodes.length > 0 &&
-                timeline.nodes.map(node => <Node { ...node } />)
+                timeline.nodes.map(node => <Node key={ node._id } { ...node } />)
             }
         </div>
     )
