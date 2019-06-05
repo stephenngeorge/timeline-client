@@ -16,10 +16,10 @@ const App: React.FC = () => {
       <Layout>
         
         <Route path='/' exact render={ () => {
-          return authState.token.length > 0 ? <Redirect to='/dashboard' /> : <Login />
+          return !!localStorage.getItem('token') ? <Redirect to='/dashboard' /> : <Login />
         } } />
         <Route path='/dashboard' render={ () => {
-          return authState.token.length > 0 ? <Dashboard user={ authState.data } /> : <Redirect to='/' />
+          return !!localStorage.getItem('token') ? <Dashboard user={ authState.data } /> : <Redirect to='/' />
         } } />
         <Route path='/timeline/:id' component={ Timeline } />
       </Layout>

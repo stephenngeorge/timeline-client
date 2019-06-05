@@ -3,8 +3,12 @@ import { RouteComponentProps } from 'react-router-dom'
 import { timelineQueries } from '../../../queries'
 import { ITimeline } from '../../../interfaces'
 
+// import child components
+import { AddNode } from '../../Forms'
+import Node from './Node'
+
 interface IParams { id: string }
-const Timeline: React.FC<RouteComponentProps<IParams>> = (props) => {
+const Timeline: React.FC<RouteComponentProps<IParams>> = ({match}) => {
     // create blank object to pass to useState
     const initialState = {
         title: '',
@@ -25,12 +29,18 @@ const Timeline: React.FC<RouteComponentProps<IParams>> = (props) => {
         setTimeline(fetchedTimeline.data)
     }
     useEffect(() => {
-        fetchTimeline(props.match.params.id)
-    }, [props.match.params.id])
+        fetchTimeline(match.params.id)
+    }, [match.params.id])
 
+    console.log(timeline)
     return (
         <div>
             <h3>{ timeline.title }</h3>
+            <AddNode timelineId={ match.params.id } />
+            {
+                timeline.nodes.length > 0 &&
+                timeline.nodes.map(node => <Node { ...node } />)
+            }
         </div>
     )
 }
