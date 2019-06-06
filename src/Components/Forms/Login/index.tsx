@@ -1,4 +1,6 @@
 import React, { useContext, useState } from 'react'
+import { Link } from 'react-router-dom'
+
 import { AuthContext, types } from '../../../store'
 
 import { authQueries } from '../../../queries'
@@ -44,6 +46,8 @@ const LoginForm: React.FC = () => {
             </div>
 
             <button type='submit'>login</button>
+
+            <Link to='/signup'>create account</Link>
         </form>
     )
 }

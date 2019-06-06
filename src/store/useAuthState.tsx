@@ -28,6 +28,7 @@ export default () => {
             case types.LOGIN:
                 return setAuthState({...payload})
             case types.LOGOUT:
+                localStorage.removeItem('token')
                 return setAuthState(initialState)
             case types.ADD_TIMELINE:
                 return setAuthState({...authState, data: {...authState.data, timelines: [...authState.data.timelines, payload]}})
