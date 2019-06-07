@@ -7,7 +7,7 @@ import { AuthContext, types } from '../../../store'
 import { authQueries } from '../../../queries'
 
 // component imports
-import { Logo } from '../../Globals'
+import { LogoType } from '../../Globals'
 
 const LoginForm: React.FC = () => {
 
@@ -26,7 +26,7 @@ const LoginForm: React.FC = () => {
 
     return (
         <div className='landing-page'>
-            <Logo />
+            <LogoType />
 
             <form onSubmit={ async (e: any) => {
                 e.preventDefault()
