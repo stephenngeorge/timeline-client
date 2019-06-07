@@ -1,9 +1,13 @@
+import './login.css'
+
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { AuthContext, types } from '../../../store'
-
 import { authQueries } from '../../../queries'
+
+// component imports
+import { Logo } from '../../Globals'
 
 const LoginForm: React.FC = () => {
 
@@ -21,34 +25,38 @@ const LoginForm: React.FC = () => {
     }
 
     return (
-        <form onSubmit={ async (e: any) => {
-            e.preventDefault()
-            await handleSubmit()
-        } }>
-            <div className='form-group'>
-                <label htmlFor='username'>username:</label>
-                <input  type='text'
-                        name='username'
-                        id='username'
-                        value={ username }
-                        onChange={ (e: any) => setUsername(e.target.value) }
-                />
-            </div>
+        <div className='landing-page'>
+            <Logo />
 
-            <div className='form-group'>
-                <label htmlFor='password'>password:</label>
-                <input  type='password'
-                        name='password'
-                        id='password'
-                        value={ password }
-                        onChange={ (e:any) => setPassword(e.target.value) }
-                />
-            </div>
+            <form onSubmit={ async (e: any) => {
+                e.preventDefault()
+                await handleSubmit()
+            } }>
+                <div className='form-group'>
+                    <label htmlFor='username'>username:</label>
+                    <input  type='text'
+                            name='username'
+                            id='username'
+                            value={ username }
+                            onChange={ (e: any) => setUsername(e.target.value) }
+                    />
+                </div>
 
-            <button type='submit'>login</button>
+                <div className='form-group'>
+                    <label htmlFor='password'>password:</label>
+                    <input  type='password'
+                            name='password'
+                            id='password'
+                            value={ password }
+                            onChange={ (e:any) => setPassword(e.target.value) }
+                    />
+                </div>
 
-            <Link to='/signup'>create account</Link>
-        </form>
+                <button type='submit'>login</button>
+
+                <Link to='/signup'>create account</Link>
+            </form>
+        </div>
     )
 }
 
