@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Noticia+Text:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap');
 
 *
 {
@@ -9,4 +10,5 @@
 :root
 {
   --font-title: 'Noticia Text', serif;
+  --font-body: 'Montserrat', sans-serif;
 }

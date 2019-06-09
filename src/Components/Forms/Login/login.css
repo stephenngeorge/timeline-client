@@ -1,0 +1,40 @@
+.landing-page
+{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form
+{
+    display: flex;
+    width: 24rem;
+}
+
+.form-group
+{
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 24rem;
+}
+.form-group > label
+{
+    position: absolute;
+    left: 1rem;
+
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: #777;
+    text-transform: uppercase;
+}
+.form-group > input
+{
+    height: 3rem;
+    width: 24rem;
+    border: none;
+    border-bottom: 2px solid #000;
+}

@@ -28,7 +28,7 @@ const LoginForm: React.FC = () => {
         <div className='landing-page'>
             <LogoType />
 
-            <form onSubmit={ async (e: any) => {
+            <form className='form form-login' onSubmit={ async (e: any) => {
                 e.preventDefault()
                 await handleSubmit()
             } }>
