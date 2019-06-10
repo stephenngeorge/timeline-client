@@ -1,4 +1,7 @@
-import './login.css'
+import '../authform.css'
+import '../button.css'
+import './loginbutton.css'
+import './typography.css'
 
 import React, { useContext, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
@@ -13,9 +16,9 @@ const LoginForm: React.FC = () => {
 
     const { dispatch } = useContext(AuthContext)
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [disabled, setDisabled] = useState(true)
+    const [username, setUsername] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
+    const [disabled, setDisabled] = useState<boolean>(true)
 
     useEffect(() => {
         let usernameNode = document.querySelector('#username-node')
@@ -45,7 +48,7 @@ const LoginForm: React.FC = () => {
     }
 
     return (
-        <form className='form form-login' onSubmit={ async (e: any) => {
+        <form className='form form-auth' onSubmit={ async (e: any) => {
             e.preventDefault()
             await handleSubmit()
         } }>

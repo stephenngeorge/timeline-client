@@ -1,0 +1,40 @@
+.timeline-button
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 24rem;
+    height: 3rem;
+
+    position: relative;
+}
+.timeline-button:before
+{
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 0;
+    width: 100%;
+    border-top: 2px solid #000;
+
+    z-index: -1000;
+}
+
+
+.button-node
+{
+    height: 1rem;
+    width: 1rem;
+    background-color: var(--node-pending);
+    border: 2px solid #000;
+    border-radius: 50%;
+
+    transition: all .4s ease-in;
+}
+
+.complete
+{
+    background-color: var(--node-complete);
+    border: 2px solid #000;
+    transform: scale(1.6, 1.6);
+}
