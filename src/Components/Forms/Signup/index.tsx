@@ -2,7 +2,7 @@ import '../authform.css'
 import '../button.css'
 
 import React, { useState, useEffect } from 'react'
-import { RouteComponentProps } from 'react-router'
+import { RouteComponentProps, withRouter } from 'react-router'
 
 // import queries
 import { authQueries } from '../../../queries'
@@ -87,4 +87,4 @@ const Signup: React.FC<RouteComponentProps> = ({history}) => {
     )
 }
 
-export default Signup
+export default withRouter(Signup)

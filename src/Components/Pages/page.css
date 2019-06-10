@@ -1,4 +1,4 @@
-.landing-page
+.auth-page
 {
     position: fixed;
     top: 0;
@@ -30,7 +30,7 @@
     text-align: right;
 }
 
-.login-wrapper
+.authform-wrapper
 {
     flex-grow: 1;
     display: flex;

@@ -5,8 +5,7 @@ import { AuthContext } from './store'
 
 // import child components
 import { Layout } from './Components/Globals'
-import { Signup } from './Components/Forms'
-import { Dashboard, LandingPage, Timeline } from './Components/Pages'
+import { Dashboard, LandingPage, SignupPage, Timeline } from './Components/Pages'
 
 const App: React.FC = () => {
   const { authState } = useContext(AuthContext)
@@ -18,7 +17,7 @@ const App: React.FC = () => {
         <Route path='/' exact render={ () => {
           return !!localStorage.getItem('token') ? <Redirect to='/dashboard' /> : <LandingPage />
         } } />
-        <Route path='/signup' component={ Signup } />
+        <Route path='/signup' component={ SignupPage } />
         <Route path='/dashboard' render={ () => {
           return !!localStorage.getItem('token') ? <Dashboard user={ authState.data } /> : <Redirect to='/' />
         } } />

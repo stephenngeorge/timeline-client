@@ -3,19 +3,19 @@ import '../page.css'
 import React from 'react'
 
 // component imports
+import { Signup } from '../../Forms'
 import { About, LogoType } from '../../Globals'
-import { Login } from '../../Forms'
 
-const LandingPage: React.FC = () => {
+const SignupPage: React.FC = () => {
     return (
         <div className='auth-page'>
             <About />
             <div className='authform-wrapper'>
                 <LogoType />
-                <Login />
+                <Signup />
             </div>
         </div>
     )
 }
 
-export default LandingPage
+export default SignupPage
