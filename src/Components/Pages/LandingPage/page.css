@@ -14,7 +14,7 @@
     text-align: center;
 
     box-sizing: border-box;
-    padding: 3rem;
+    padding: 4rem;
 
     background-color: var(--accent-color);
     color: #fff;
@@ -24,7 +24,7 @@
     font-family: var(--font-body);
     font-weight: 400;
     font-size: 1rem;
-    line-height: 140%;
+    line-height: 160%;
 }
 
 .login-wrapper
