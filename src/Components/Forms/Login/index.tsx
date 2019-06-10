@@ -6,9 +6,6 @@ import { Link } from 'react-router-dom'
 import { AuthContext, types } from '../../../store'
 import { authQueries } from '../../../queries'
 
-// component imports
-import { LogoType } from '../../Globals'
-
 // asset imports
 import { key_icon } from '../../../assets'
 
@@ -48,44 +45,40 @@ const LoginForm: React.FC = () => {
     }
 
     return (
-        <div className='landing-page'>
-            <LogoType />
+        <form className='form form-login' onSubmit={ async (e: any) => {
+            e.preventDefault()
+            await handleSubmit()
+        } }>
+            <div className='form-group'>
+                <input  type='text'
+                        name='username'
+                        id='username'
+                        value={ username }
+                        onChange={ (e: any) => setUsername(e.target.value) }
+                />
+                <label htmlFor='username'>username</label>
+            </div>
 
-            <form className='form form-login' onSubmit={ async (e: any) => {
-                e.preventDefault()
-                await handleSubmit()
-            } }>
-                <div className='form-group'>
-                    <input  type='text'
-                            name='username'
-                            id='username'
-                            value={ username }
-                            onChange={ (e: any) => setUsername(e.target.value) }
-                    />
-                    <label htmlFor='username'>username</label>
-                </div>
+            <div className='form-group'>
+                <input  type='password'
+                        name='password'
+                        id='password'
+                        value={ password }
+                        onChange={ (e:any) => setPassword(e.target.value) }
+                />
+                <label htmlFor='password'>password</label>
+            </div>
 
-                <div className='form-group'>
-                    <input  type='password'
-                            name='password'
-                            id='password'
-                            value={ password }
-                            onChange={ (e:any) => setPassword(e.target.value) }
-                    />
-                    <label htmlFor='password'>password</label>
-                </div>
+            <div className='timeline-button'>
+                <div className='button-node' id='username-node'></div>
+                <div className='button-node' id='password-node'></div>
+                <button disabled={ disabled } type='submit' id='login-button'>
+                    <img src={ key_icon } alt='login' id='login-icon' />
+                </button>
+            </div>
 
-                <div className='timeline-button'>
-                    <div className='button-node' id='username-node'></div>
-                    <div className='button-node' id='password-node'></div>
-                    <button disabled={ disabled } type='submit' id='login-button'>
-                        <img src={ key_icon } alt='login' id='login-icon' />
-                    </button>
-                </div>
-
-                <Link to='/signup' id='signup-ref'>no account? sign up</Link>
-            </form>
-        </div>
+            <Link to='/signup' id='signup-ref'>no account? sign up</Link>
+        </form>
     )
 }
 
