@@ -33,23 +33,23 @@ const LoginForm: React.FC = () => {
                 await handleSubmit()
             } }>
                 <div className='form-group'>
-                    <label htmlFor='username'>username:</label>
                     <input  type='text'
                             name='username'
                             id='username'
                             value={ username }
                             onChange={ (e: any) => setUsername(e.target.value) }
                     />
+                    <label htmlFor='username'>username:</label>
                 </div>
 
                 <div className='form-group'>
-                    <label htmlFor='password'>password:</label>
                     <input  type='password'
                             name='password'
                             id='password'
                             value={ password }
                             onChange={ (e:any) => setPassword(e.target.value) }
                     />
+                    <label htmlFor='password'>password:</label>
                 </div>
 
                 <button type='submit'>login</button>

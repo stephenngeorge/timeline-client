@@ -11,6 +11,7 @@
 .form
 {
     display: flex;
+    flex-direction: column;
     width: 24rem;
 }
 
@@ -20,21 +21,42 @@
     align-items: center;
     position: relative;
     width: 24rem;
+    margin-bottom: 2rem;
 }
 .form-group > label
 {
     position: absolute;
     left: 1rem;
+    top: 1rem;
 
     font-family: var(--font-body);
     font-weight: 300;
     color: #777;
     text-transform: uppercase;
+
+    transition: all .4s ease-out;
 }
 .form-group > input
 {
     height: 3rem;
     width: 24rem;
     border: none;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #777777;
+
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1rem;
+    color: #000;
+    text-transform: uppercase;
+}
+.form-group > input:focus
+{
+    outline: none;
+}
+
+.form-group > input:focus + label,
+.form-group > input:not([value=""]) + label
+{
+    font-size: .7rem;
+    top: -.8rem;
 }
