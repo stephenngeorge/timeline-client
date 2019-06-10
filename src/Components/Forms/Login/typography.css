@@ -1,0 +1,11 @@
+#signup-ref
+{
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: .8rem;
+    text-align: end;
+    color: var(--node-problem);
+
+    margin-top: 3rem;
+}

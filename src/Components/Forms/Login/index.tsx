@@ -32,9 +32,7 @@ const LoginForm: React.FC = () => {
             if (usernameNode.classList.contains('complete') && passwordNode.classList.contains('complete')) {
                 setDisabled(false)
             }
-            else {
-                setDisabled(true)
-            }
+            else setDisabled(true)
         }
     }, [username, password])
 
@@ -82,7 +80,7 @@ const LoginForm: React.FC = () => {
                     </button>
                 </div>
 
-                <Link to='/signup'>create account</Link>
+                <Link to='/signup' id='signup-ref'>no account? sign up</Link>
             </form>
         </div>
     )
