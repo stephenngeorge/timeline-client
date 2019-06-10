@@ -12,7 +12,8 @@
   --font-title: 'Noticia Text', serif;
   --font-body: 'Montserrat', sans-serif;
 
-  --node-pending: #FFEEAD;
-  --node-complete: #96CEB4;
-  --node-problem: #FF6F69;
+  --node-pending: #ffc425;
+  --node-complete: #00b159;
+  --node-problem: #d11141;
+  --accent-color: #00aedb;
 }
