@@ -8,22 +8,22 @@
     align-items: center;
 }
 
-.form
+.form-login
 {
     display: flex;
     flex-direction: column;
     width: 24rem;
 }
 
-.form-group
+.form-login > .form-group
 {
     display: flex;
     align-items: center;
     position: relative;
     width: 24rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
-.form-group > label
+.form-login > .form-group > label
 {
     position: absolute;
     left: 1rem;
@@ -36,7 +36,7 @@
 
     transition: all .4s ease-out;
 }
-.form-group > input
+.form-login > .form-group > input
 {
     height: 3rem;
     width: 24rem;
@@ -47,16 +47,17 @@
     font-weight: 300;
     font-size: 1rem;
     color: #000;
-    text-transform: uppercase;
 }
-.form-group > input:focus
+.form-login > .form-group > input:focus
 {
     outline: none;
 }
 
-.form-group > input:focus + label,
-.form-group > input:not([value=""]) + label
+.form-login > .form-group > input:focus + label,
+.form-login > .form-group > input:not([value=""]) + label
 {
     font-size: .7rem;
     top: -.8rem;
 }
+
+@import './button.css';

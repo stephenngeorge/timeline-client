@@ -11,4 +11,8 @@
 {
   --font-title: 'Noticia Text', serif;
   --font-body: 'Montserrat', sans-serif;
+
+  --node-pending: #FFEEAD;
+  --node-complete: #96CEB4;
+  --node-problem: #FF6F69;
 }

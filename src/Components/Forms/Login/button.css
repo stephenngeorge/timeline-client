@@ -1,0 +1,117 @@
+.timeline-button
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 24rem;
+    height: 3rem;
+
+    position: relative;
+}
+.timeline-button::before
+{
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 0;
+    width: 100%;
+    border-top: 2px solid #000;
+
+    z-index: -1000;
+}
+
+
+.button-node
+{
+    height: 1rem;
+    width: 1rem;
+    background-color: var(--node-pending);
+    border: 2px solid #777;
+    border-radius: 50%;
+
+    transition: all .4s ease-in;
+}
+
+.complete
+{
+    background-color: var(--node-complete);
+    border: 2px solid #000;
+    transform: scale(1.6, 1.6);
+}
+
+#login-button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 3rem;
+    width: 3rem;
+    border: 2px solid #000;
+    border-radius: 50%;
+    background-color: var(--node-complete);
+
+    position: relative;
+
+    transition: all .4s ease-out;
+}
+#login-button:after
+{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 2px solid var(--node-complete);
+    z-index: -1000;
+
+    animation: ripple 2s infinite;
+}
+
+#login-button:disabled
+{
+    border: 2px solid #777;
+    background-color: var(--node-pending);
+}
+#login-button:disabled:hover
+{
+    cursor: default;
+}
+#login-button:disabled:after
+{
+    animation: none;
+}
+
+#login-button:hover,
+#login-button:focus
+{
+    outline: none;
+    cursor: pointer;
+}
+
+@keyframes ripple {
+    0%
+    {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+    40%
+    {
+        opacity: 1;
+    }
+    80%, 100%
+    {
+        opacity: 0;
+        transform: scale(1.6, 1.6);
+    }
+}
+
+
+#login-icon
+{
+    height: 1.2rem;
+    width: 1.2rem;
+}
