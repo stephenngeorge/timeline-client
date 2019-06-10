@@ -38,10 +38,13 @@ const LoginForm: React.FC = () => {
 
     const handleSubmit = async () => {
         const loginData = await authQueries.login(username, password)
-        dispatch({
-            type: types.LOGIN,
-            payload: loginData
-        })
+        if (loginData.type === "ERROR") console.log('error', loginData.message)
+        else {
+            dispatch({
+                type: types.LOGIN,
+                payload: loginData
+            })
+        }
     }
 
     return (

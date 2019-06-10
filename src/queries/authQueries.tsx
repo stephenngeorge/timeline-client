@@ -15,7 +15,7 @@ export const login = async (username: string, password: string): Promise<any> =>
         // parse response object
         const response = await loginData.json()
         // save token value to localstorage
-        localStorage.setItem('token', response.token)
+        if (response.type !== "ERROR") localStorage.setItem('token', response.token)
         
         return response
     }
