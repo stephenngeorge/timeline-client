@@ -1,0 +1,18 @@
+.nav
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+
+    box-shadow: var(--shadow-light);
+}
+
+.nav > li,
+.nav > div > li
+{
+    list-style-type: none;
+    margin-right: 2rem;
+}
+
+@import './logoutbutton.css';

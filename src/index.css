@@ -16,4 +16,6 @@
   --node-complete: #00b159;
   --node-problem: #d11141;
   --accent-color: #00aedb;
+
+  --shadow-light: 0 0 3px 4px rgba(100, 100, 100, .4);
 }

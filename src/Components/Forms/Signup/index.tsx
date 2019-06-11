@@ -56,7 +56,7 @@ const Signup: React.FC<RouteComponentProps> = ({history}) => {
                         value={ username }
                         onChange={ (e: any) => setUsername(e.target.value) }
                 />
-                <label>username</label>
+                <label htmlFor='username'>username</label>
             </div>
 
             <div className='form-group'>
@@ -66,7 +66,7 @@ const Signup: React.FC<RouteComponentProps> = ({history}) => {
                         value={ password }
                         onChange={ (e: any) => setPassword(e.target.value) }
                 />
-                <label>password</label>
+                <label htmlFor='password'>password</label>
             </div>
 
             <div className='form-group'>
@@ -76,7 +76,7 @@ const Signup: React.FC<RouteComponentProps> = ({history}) => {
                         value={ passwordConf }
                         onChange={ (e: any) => setPasswordConf(e.target.value) }
                 />
-                <label>confirm</label>
+                <label htmlFor='passwordConf'>confirm</label>
             </div>
 
             <div className='timeline-button'>

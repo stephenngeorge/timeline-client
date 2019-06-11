@@ -6,7 +6,7 @@
         transform: scale(1.2, 1.2);
     }
 }
-.node
+.logotype > .node
 {
     border: 2px solid #000;
     border-radius: 50%;
@@ -16,7 +16,7 @@
     animation: pulse 4s infinite;
 }
 
-#node-1
+.logotype > #node-1
 {
     animation-delay: 600ms;
     width: 2rem;
@@ -24,14 +24,14 @@
 
     background-color: var(--node-complete);
 }
-#node-2
+.logotype > #node-2
 {
     width: 1.4rem;
     height: 1.4rem;
 
     background-color: var(--node-pending);
 }
-#node-3
+.logotype > #node-3
 {
     animation-delay: 1.1s;
     width: 1.8rem;
@@ -39,7 +39,7 @@
 
     background-color: var(--node-problem);
 }
-#node-4
+.logotype > #node-4
 {
     animation-delay: 2s;
     width: .8rem;
@@ -47,7 +47,7 @@
 
     background-color: var(--node-pending);
 }
-#node-5
+.logotype > #node-5
 {
     animation-delay: 1.4s;
     width: 2rem;

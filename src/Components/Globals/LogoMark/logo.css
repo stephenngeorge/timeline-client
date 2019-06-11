@@ -1,0 +1,23 @@
+.logomark
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width: 7rem;
+
+    position: relative;
+}
+
+.logomark:before
+{
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+
+@import './logo_animation.css';

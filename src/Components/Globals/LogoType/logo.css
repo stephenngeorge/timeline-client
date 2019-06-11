@@ -1,4 +1,4 @@
-.logo
+.logotype
 {
     display: flex;
     align-items: center;
@@ -6,7 +6,7 @@
     padding: 0 0 3rem 0;
 }
 
-h1
+.logotype > h1
 {
     font-family: var(--font-title);
     font-weight: 400;
@@ -17,7 +17,7 @@ h1
 
     position: relative;
 }
-h1:after
+.logotype > h1:after
 {
     position: absolute;
     top: 50%;

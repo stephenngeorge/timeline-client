@@ -1,4 +1,4 @@
-import '../page.css'
+import '../authpage.css'
 
 import React from 'react'
 
