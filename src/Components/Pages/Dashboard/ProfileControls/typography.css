@@ -1,0 +1,12 @@
+#controls-label
+{
+    height: 1.8rem;
+    line-height: 1.8rem;
+    padding-right: 1.4rem;
+
+    font-family: var(--font-body);
+    font-size: .8rem;
+    font-weight: 300;
+    font-style: oblique;
+    color: #777;
+}
