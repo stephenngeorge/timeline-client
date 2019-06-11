@@ -19,12 +19,14 @@
 
     background-color: #fff;
     border-radius: 50%;
-    box-shadow: var(--shadow-light);
 }
 .profile-header__controls > button:hover,
-.profile-header__controls > a:hover
+.profile-header__controls > a:hover,
+.profile-header__controls > button:focus,
+.profile-header__controls > a:focus
 {
     cursor: pointer;
+    outline: none;
 }
 
 .profile-header__controls > button > img,

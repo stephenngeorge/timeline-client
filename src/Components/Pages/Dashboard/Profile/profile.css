@@ -2,6 +2,7 @@
 {
     padding: 2rem;
     width: 50%;
+    box-sizing: border-box;
 }
 
 .profile-header
