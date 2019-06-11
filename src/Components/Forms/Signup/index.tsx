@@ -1,8 +1,10 @@
 import '../authform.css'
 import '../button.css'
+import './signupbutton.css'
 
 import React, { useState, useEffect } from 'react'
 import { RouteComponentProps, withRouter } from 'react-router'
+import { signup_icon } from '../../../assets'
 
 // import queries
 import { authQueries } from '../../../queries'
@@ -81,7 +83,9 @@ const Signup: React.FC<RouteComponentProps> = ({history}) => {
                 <div className='button-node' id='username-node'></div>
                 <div className='button-node' id='password-node'></div>
                 <div className='button-node' id='passwordConf-node'></div>
-                <button disabled={ disabled } type='submit'>sign up</button>
+                <button disabled={ disabled } type='submit' id='signup-button'>
+                    <img src={ signup_icon } alt='signup' id='signup-icon' />
+                </button>
             </div>
         </form>
     )
