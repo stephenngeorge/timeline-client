@@ -1,18 +1,15 @@
 import React from 'react'
 
-// import child components
-import TimelineThumbnails from './TimelineThumbnails'
-import { AddTimeline } from '../../Forms'
-
 // import interfaces
 import { IDashboardProps } from '../../../interfaces'
+
+// component imports
+import Profile from './Profile'
 
 const Dashboard: React.FC<IDashboardProps> = ({user}) => {
     return (
         <div>
-            <h2>{ user.username }</h2>
-            <AddTimeline />
-            <TimelineThumbnails timelines={ user.timelines } />
+            <Profile { ...user } />
         </div>
     )
 }
