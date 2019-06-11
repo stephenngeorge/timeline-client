@@ -18,3 +18,17 @@ export const addNode = async (title: string, description: string = '', timelineI
 
     return response
 }
+
+// get all nodes for a given timeline
+export const fetchNodes = async (timelineId: string) => {
+    const nodes = await fetch(`${url}/nodes/timeline/${timelineId}`, {
+        method: 'GET',
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+    // parse response
+    const response = await nodes.json()
+
+    return response
+}

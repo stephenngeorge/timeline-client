@@ -9,7 +9,7 @@
 .profile-header__controls > a
 {
     position: relative;
-    margin-right: 1.2rem;
+    margin-left: 1.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
