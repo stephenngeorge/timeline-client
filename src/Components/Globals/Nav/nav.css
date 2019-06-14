@@ -4,8 +4,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
+    height: 3rem;
 
     box-shadow: var(--shadow-light);
+    z-index: 1000;
+    position: relative;
 }
 
 .nav > li,
