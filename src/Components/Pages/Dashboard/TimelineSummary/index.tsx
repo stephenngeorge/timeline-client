@@ -1,3 +1,5 @@
+import './summary.css'
+
 import React, { useEffect, useState } from 'react'
 // query imports
 import { nodeQueries } from '../../../../queries'
@@ -24,9 +26,24 @@ const TimelineSummary: React.FC<ITimelineSummaryProps> = ({timelineId}) => {
 
     return (
         <div>
-            {pendingNodes.length}
-            {completedNodes.length}
-            {problemNodes.length}
+            <div className='summary-nodes-container' id='pending-nodes'>
+                {
+                    pendingNodes.length > 0 &&
+                    pendingNodes.map(node => <div key={ node._id } className='summary-node node-pending'></div>)
+                }
+            </div>
+            <div className='summary-nodes-container' id='completed-nodes'>
+                {
+                    completedNodes.length > 0 &&
+                    completedNodes.map(node => <div key={ node._id } className='summary-node node-completed'></div>)
+                }
+            </div>
+            <div className='summary-nodes-container' id='problem-nodes'>
+                {
+                    problemNodes.length > 0 &&
+                    problemNodes.map(node => <div key={ node._id } className='summary-node node-problem'></div>)
+                }
+            </div>
         </div>
     )
 }
