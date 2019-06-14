@@ -24,7 +24,10 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
                                 </div>
                                 {
                                     !!timeline.description && timeline.description.length > 0 &&
-                                    <p id='timeline-description'>{ timeline.description.substring(0, 20) }...</p>
+                                    <p id='timeline-description'>{
+                                        timeline.description.length > 20 ?
+                                            `${timeline.description.substring(0, 20)}...` : timeline.description
+                                    }</p>
                                 }
                                 {
                                     timeline.nodes.length > 0 &&
