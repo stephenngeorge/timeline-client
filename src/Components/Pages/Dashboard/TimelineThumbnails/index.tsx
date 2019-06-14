@@ -1,28 +1,30 @@
+import './thumbnails.css'
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import TimelineSummary from './TimelineSummary'
+import TimelineSummary from '../TimelineSummary'
 
-import { ITimeline } from '../../../interfaces'
+import { ITimeline } from '../../../../interfaces'
 interface ITimelineThumbnailProps {
     timelines: ITimeline[]
 }
 
 const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
     return (
-        <ul>
+        <ul className='timeline-thumbnails'>
             {
                 timelines.map(timeline => {
                     return (
-                        <li key={ timeline._id }>
+                        <li className='thumbnail' key={ timeline._id }>
                             <Link to={`/timeline/${timeline._id}`}>
                                 <div className='timeline-header'>
-                                    <p>{ timeline.title }</p>
-                                    <p>({ timeline.nodes.length })</p>
+                                    <p id='timeline-title'>{ timeline.title }</p>
+                                    <p id='timeline-nodes-length'>({ timeline.nodes.length })</p>
                                 </div>
                                 {
                                     !!timeline.description && timeline.description.length > 0 &&
-                                    <p>{ timeline.description.substring(0, 20) }...</p>
+                                    <p id='timeline-description'>{ timeline.description.substring(0, 20) }...</p>
                                 }
                                 {
                                     timeline.nodes.length > 0 &&
