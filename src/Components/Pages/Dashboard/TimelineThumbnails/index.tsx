@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 
 import TimelineSummary from '../TimelineSummary'
 
+// asset imports
+import { deadline_icon } from '../../../../assets'
+
 import { ITimeline } from '../../../../interfaces'
 interface ITimelineThumbnailProps {
     timelines: ITimeline[]
@@ -20,6 +23,7 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
                             <div className='timeline-header'>
                                 <Link to={`/timeline/${timeline._id}`} id='timeline-title'>{ timeline.title }</Link>
                                 <p id='timeline-nodes-length'>({ timeline.nodes.length })</p>
+                                <img src={ deadline_icon } id='deadline_icon' alt='deadline icon' />
                             </div>
                             {
                                 !!timeline.description && timeline.description.length > 0 &&

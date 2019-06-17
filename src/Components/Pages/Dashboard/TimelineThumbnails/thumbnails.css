@@ -4,10 +4,16 @@
     width: 100%;
     padding: 0 2rem;
     box-sizing: border-box;
+
+    display: flex;
+    flex-flow: row wrap;
 }
 .timeline-thumbnails > li
 {
-    margin: 2rem 0;
+    width: 24rem;
+    max-width: 28%;
+    min-width: 18rem;
+    margin: 2rem 2rem 1rem 0;
     padding: 1rem;
     box-sizing: border-box;
     box-shadow: var(--shadow-light);
@@ -24,10 +30,11 @@
 {
     display: flex;
     align-items: center;
+    position: relative;
 }
 .timeline-header > #timeline-title
 {
-    margin-right: 1.4rem;
+    margin-right: 1rem;
     padding: .2rem .4rem;
     background-color: var(--accent-color);
     font-family: var(--font-body);
@@ -51,7 +58,7 @@
 {
     font-family: var(--font-body);
     font-weight: 400;
-    font-size: .8rem;
+    font-size: .9rem;
     color: #777;
     font-style: italic;
 }
@@ -73,4 +80,12 @@
 {
     box-shadow: var(--shadow-mid);
     transform: scale(1.01, 1.01);
+}
+
+#deadline_icon
+{
+    height: 1.4rem;
+    width: 1.4rem;
+    position: absolute;
+    right: 0;
 }

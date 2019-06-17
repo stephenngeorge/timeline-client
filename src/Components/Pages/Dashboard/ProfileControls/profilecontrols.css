@@ -61,7 +61,7 @@
     border-radius: 50%;
     border: 1px solid var(--node-complete);
 
-    z-index: -1000;
+    z-index: 4;
 
     animation: controls_ripple 2s infinite;
 }
@@ -77,7 +77,7 @@
     border-radius: 50%;
     border: 1px solid var(--node-pending);
 
-    z-index: -1000;
+    z-index: 4;
 
     animation: controls_ripple 2s infinite;
 }
@@ -93,7 +93,7 @@
     border-radius: 50%;
     border: 1px solid var(--accent-color);
 
-    z-index: -1000;
+    z-index: 4;
 
     animation: controls_ripple 2s infinite;
 }

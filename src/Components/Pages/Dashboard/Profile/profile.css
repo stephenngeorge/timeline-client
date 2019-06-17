@@ -1,6 +1,6 @@
 .profile
 {
-    width: 50%;
+    width: 100%;
     height: calc(100vh - 5rem);
     box-sizing: border-box;
 
@@ -29,7 +29,7 @@
 {
     font-family: var(--font-title);
     font-weight: 400;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     line-height: 3rem;
