@@ -4,7 +4,7 @@ import './typography.css'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 // asset imports
-import { create_icon, edit_icon, settings_icon } from '../../../../assets'
+import { create_icon_white, edit_icon_white, settings_icon_white } from '../../../../assets'
 
 interface IProfileControlsProps {
     setAddTimelineForm: Dispatch<SetStateAction<boolean>>,
@@ -52,13 +52,13 @@ const ProfileControls: React.FC<IProfileControlsProps> = ({setAddTimelineForm, a
         <div className='profile-header__controls'>
             <p id='controls-label'>{ label }</p>
             <button id='button-createTimeline' onClick={ () => setAddTimelineForm(!addTimelineForm) }>
-                <img src={ create_icon } alt='add timeline' />
+                <img src={ create_icon_white } alt='add timeline' />
             </button>
             <button id='button-editProfile'>
-                <img src={ edit_icon } alt='edit profile' />
+                <img src={ edit_icon_white } alt='edit profile' />
             </button>
             <button id='button-accountSettings'>
-                <img src={ settings_icon } alt='account settings' />
+                <img src={ settings_icon_white } alt='account settings' />
             </button>
         </div>
     )
