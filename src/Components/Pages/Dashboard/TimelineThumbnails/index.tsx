@@ -1,7 +1,8 @@
 import './thumbnails.css'
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import DashboardContext from '../dashboardContext'
 
 import TimelineSummary from '../TimelineSummary'
 
@@ -14,6 +15,9 @@ interface ITimelineThumbnailProps {
 }
 
 const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
+
+    const { dashboardProps, setDashboardProps } = useContext(DashboardContext)
+
     return (
         <ul className='timeline-thumbnails'>
             {
@@ -30,7 +34,11 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
                                 }
                                 {
                                     timeline.deadline === undefined &&
-                                    <img src={ add_deadline_icon } id='deadline_icon' alt='deadline icon' />
+                                    <img    onClick={ () => setDashboardProps({ dateTimeSelector: !dashboardProps.dateTimeSelector }) }
+                                            src={ add_deadline_icon }
+                                            id='deadline_icon'
+                                            alt='deadline icon'
+                                    />
                                 }
                             </div>
                             {
