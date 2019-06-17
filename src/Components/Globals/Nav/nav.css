@@ -11,11 +11,14 @@
     position: relative;
 }
 
-.nav > li,
-.nav > div > li
+.nav > li
 {
     list-style-type: none;
     margin-right: 2rem;
+}
+.nav > div > li
+{
+    list-style-type: none;
 }
 
 @import './logoutbutton.css';

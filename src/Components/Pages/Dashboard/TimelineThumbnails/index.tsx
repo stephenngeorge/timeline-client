@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import TimelineSummary from '../TimelineSummary'
 
 // asset imports
-import { deadline_icon } from '../../../../assets'
+import { add_deadline_icon, deadline_icon } from '../../../../assets'
 
 import { ITimeline } from '../../../../interfaces'
 interface ITimelineThumbnailProps {
@@ -18,12 +18,20 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
         <ul className='timeline-thumbnails'>
             {
                 timelines.map(timeline => {
+                    console.log(timeline.deadline)
                     return (
                         <li className='thumbnail' key={ timeline._id }>
                             <div className='timeline-header'>
                                 <Link to={`/timeline/${timeline._id}`} id='timeline-title'>{ timeline.title }</Link>
                                 <p id='timeline-nodes-length'>({ timeline.nodes.length })</p>
-                                <img src={ deadline_icon } id='deadline_icon' alt='deadline icon' />
+                                {
+                                    timeline.deadline !== undefined &&
+                                    <img src={ deadline_icon } id='deadline_icon' alt='deadline icon' />
+                                }
+                                {
+                                    timeline.deadline === undefined &&
+                                    <img src={ add_deadline_icon } id='deadline_icon' alt='deadline icon' />
+                                }
                             </div>
                             {
                                 !!timeline.description && timeline.description.length > 0 &&
