@@ -38,17 +38,17 @@
 
 #button-createTimeline
 {
-    border: 2px solid var(--node-complete);
+    border: 2px solid #000;
     background-color: var(--node-complete);
 }
 #button-editProfile
 {
-    border: 2px solid var(--node-pending);
+    border: 2px solid #000;
     background-color: var(--node-pending);
 }
 #button-accountSettings
 {
-    border: 2px solid var(--accent-color);
+    border: 2px solid #000;
     background-color: var(--accent-color);
 }
 
