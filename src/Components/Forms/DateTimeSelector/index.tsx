@@ -1,11 +1,13 @@
+import './datetimeselector.css'
+
 import React, { useState } from 'react'
 
 const DateTimeSelector: React.FC = () => {
     const months: string[] = [
-        'January', 'February', 'March',
-        'April', 'May', 'June',
-        'July', 'August', 'September',
-        'October', 'November', 'December'
+        'JAN', 'FEB', 'MAR',
+        'APR', 'MAY', 'JUN',
+        'JUL', 'AUG', 'SEP',
+        'OCT', 'NOV', 'DEC'
     ]
 
     const [ selectedMonth, setSelectedMonth ] = useState<string>('January')
@@ -38,7 +40,7 @@ const DateTimeSelector: React.FC = () => {
         days.push(i)
     }
     return (
-        <form>
+        <form className='date-time-selector'>
             <div className='months'>
                 {
                     months.map(month => {
