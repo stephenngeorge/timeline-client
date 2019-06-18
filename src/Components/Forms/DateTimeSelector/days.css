@@ -1,0 +1,40 @@
+.days
+{
+    flex-basis: calc(100% / 3);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1rem;
+}
+
+.day_single
+{
+    width: 1rem;
+    height: 1rem;
+    padding: .4rem;
+    margin: .3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid #000;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: #fff;
+
+    font-family: var(--font-body);
+    font-size: .9rem;
+    font-weight: 700;
+
+    transition: all .4s;
+}
+.day_single:hover
+{
+    background-color: #fff;
+    color: var(--accent-color);
+
+    cursor: pointer;
+}

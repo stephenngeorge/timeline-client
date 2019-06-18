@@ -1,56 +1,54 @@
 import './datetimeselector.css'
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import DashboardContext from '../../Pages/Dashboard/dashboardContext'
 
 const DateTimeSelector: React.FC = () => {
-    const months: string[] = [
-        'JAN', 'FEB', 'MAR',
-        'APR', 'MAY', 'JUN',
-        'JUL', 'AUG', 'SEP',
-        'OCT', 'NOV', 'DEC'
+    interface IMonth {
+        month: string,
+        monthShort: string,
+        dayCount: number
+    }
+    const months: IMonth[] = [
+        {month: 'January', monthShort: 'JAN', dayCount: 31},
+        {month: 'February', monthShort: 'FEB', dayCount: 29},
+        {month: 'March', monthShort: 'MAR', dayCount: 31},
+        {month: 'April', monthShort: 'APR', dayCount: 30},
+        {month: 'May', monthShort: 'MAY', dayCount: 31},
+        {month: 'June', monthShort: 'JUN', dayCount: 30},
+        {month: 'July', monthShort: 'JUL', dayCount: 31},
+        {month: 'August', monthShort: 'AUG', dayCount: 31},
+        {month: 'September', monthShort: 'SEP', dayCount: 30},
+        {month: 'October', monthShort: 'OCT', dayCount: 31},
+        {month: 'November', monthShort: 'NOV', dayCount: 30},
+        {month: 'December', monthShort: 'DEC', dayCount: 31}
     ]
 
-    const [ selectedMonth, setSelectedMonth ] = useState<string>('January')
+    const [ selectedMonth, setSelectedMonth ] = useState<IMonth>({month: 'January', monthShort: 'JAN', dayCount: 31})
+    
     const days = []
-    let count = 31
-
-    switch(selectedMonth) {
-        case 'January':
-        case 'March':
-        case 'May':
-        case 'July':
-        case 'August':
-        case 'October':
-        case 'December':
-            count = 31
-            break
-        case 'April':
-        case 'June':
-        case 'September':
-        case 'November':
-            count = 30
-            break
-        case 'February':
-            count = 29
-            break
-        default: count = 30
-    }
-
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < selectedMonth.dayCount; i++) {
         days.push(i)
     }
+
+    const { dashboardProps } = useContext(DashboardContext)
+    let animation = ''
+    const selector = document.querySelector('.date-time-selector')
+    if (selector !== null) {
+        dashboardProps.dateTimeSelector === true ? animation = 'slide-in' : animation = 'slide-out'
+    }
     return (
-        <form className='date-time-selector'>
+        <form className={`date-time-selector ${ animation }`}>
             <div className='months'>
                 {
                     months.map(month => {
-                       return <div onClick={() => setSelectedMonth(month)} key={ month } className='month_single'>{month}</div>
+                       return <div onClick={() => setSelectedMonth(month)} key={ month.monthShort } className='month_single'>{month.monthShort}</div>
                     })
                 }
             </div>
             <div className='days'>
                 {
-                    days.map(day => <p key={day}>{day + 1}</p>)
+                    days.map(day => <p className='day_single' key={day}>{day + 1}</p>)
                 }
             </div>
         </form>

@@ -1,0 +1,40 @@
+.months
+{
+    flex-basis: calc(100% / 3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.month_single
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-basis: 25%;
+
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: .8rem;
+
+    border: 2px solid #000;
+    border-radius: .4rem;
+    background-color: #fff;
+    color: var(--accent-color);
+
+    height: 1.8rem;
+    margin: .4rem;
+
+    transition: all .4s;
+}
+.month_single:hover
+{
+    background-color: var(--accent-color);
+    color: #fff;
+    cursor: pointer;
+}

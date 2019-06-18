@@ -21,10 +21,7 @@ const Dashboard: React.FC<IDashboardProps> = ({user}) => {
         }}>
             <div>
                 <Profile { ...user } />
-                {
-                    dashboardProps.dateTimeSelector === true &&
-                    <DateTimeSelector />
-                }
+                <DateTimeSelector />
             </div>
         </DashboardContext.Provider>
     )
