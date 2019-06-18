@@ -16,7 +16,9 @@
   --node-complete: #00b159;
   --node-problem: #d11141;
   --accent-color: #00aedb;
-  --background-faint: #fff7ed;
+  --blue-faint: rgba(0, 174, 219, .1);
+  --red-faint: rgba(209, 17, 65, .1);
+
 
   --shadow-light: 0 0 3px 4px rgba(100, 100, 100, .4);
   --shadow-mid: 0 0 4px 6px rgba(100, 100, 100, .5);

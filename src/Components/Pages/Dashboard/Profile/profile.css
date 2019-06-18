@@ -4,7 +4,7 @@
     height: calc(100vh - 5rem);
     box-sizing: border-box;
 
-    background-color: rgba(0, 174, 219, .1);
+    background-color: var(--blue-faint);
     position: relative;
     z-index: 10;
 }

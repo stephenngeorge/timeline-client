@@ -25,7 +25,7 @@
     border: 2px solid #000;
     border-radius: .4rem;
     background-color: #fff;
-    color: var(--accent-color);
+    color: var(--node-problem);
 
     height: 1.8rem;
     margin: .4rem;
@@ -34,7 +34,13 @@
 }
 .month_single:hover
 {
-    background-color: var(--accent-color);
+    background-color: var(--node-problem);
     color: #fff;
     cursor: pointer;
+}
+
+.chosen-month
+{
+    background-color: var(--node-problem);
+    color: #fff;
 }

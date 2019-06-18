@@ -25,7 +25,10 @@ const DateTimeSelector: React.FC = () => {
     ]
 
     const [ selectedMonth, setSelectedMonth ] = useState<IMonth>({month: 'January', monthShort: 'JAN', dayCount: 31})
-    
+    const [ selectedDay, setSelectedDay ] = useState<number>(0)
+    const [ hours, setHours ] = useState<string>('')
+    const [ minutes, setMinutes ] = useState<string>('')
+
     const days = []
     for (let i = 0; i < selectedMonth.dayCount; i++) {
         days.push(i)
@@ -42,14 +45,33 @@ const DateTimeSelector: React.FC = () => {
             <div className='months'>
                 {
                     months.map(month => {
-                       return <div onClick={() => setSelectedMonth(month)} key={ month.monthShort } className='month_single'>{month.monthShort}</div>
+                        const chosenMonth = selectedMonth.monthShort === month.monthShort ? 'chosen-month' : ''
+                        return <div onClick={() => setSelectedMonth(month)} key={ month.monthShort } className={`month_single ${chosenMonth}`}>{month.monthShort}</div>
                     })
                 }
             </div>
             <div className='days'>
                 {
-                    days.map(day => <p className='day_single' key={day}>{day + 1}</p>)
+                    days.map(day => {
+                        const chosenDay = selectedDay === day ? 'chosen-day' : ''
+                        return <p onClick={ () => setSelectedDay(day) } className={`day_single ${chosenDay}`} key={day}>{day + 1}</p>
+                    })
                 }
+            </div>
+            <div className='time'>
+                <input  name='hours'
+                        id='hours'
+                        type='text'
+                        value={ hours }
+                        onChange={ (e:any) => setHours(e.target.value) }
+                />
+                <p>:</p>
+                <input  name='minutes'
+                        id='minutes'
+                        type='text'
+                        value={ minutes }
+                        onChange={ (e:any) => setMinutes(e.target.value) }
+                />
             </div>
         </form>
     )
