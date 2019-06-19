@@ -13,16 +13,39 @@ import { ITimeline } from '../../../../interfaces'
 interface ITimelineThumbnailProps {
     timelines: ITimeline[]
 }
-
 const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
 
     const { dashboardProps, setDashboardProps } = useContext(DashboardContext)
+
+    const handleDeadlineClick = (timelineId: string, timelineTitle: string) => {
+        const { dateTimeSelector, focusTimelineId } = dashboardProps
+        if (!dateTimeSelector && focusTimelineId !== timelineId) {
+            setDashboardProps({
+                dateTimeSelector: !dateTimeSelector,
+                focusTimelineId: timelineId,
+                focusTimelineTitle: timelineTitle
+            })
+        }
+        else if (!!dateTimeSelector && focusTimelineId !== timelineId) {
+            setDashboardProps({
+                dateTimeSelector: true,
+                focusTimelineId: timelineId,
+                focusTimelineTitle: timelineTitle
+            })
+        }
+        else if (!!dateTimeSelector && focusTimelineId === timelineId) {
+            setDashboardProps({
+                dateTimeSelector: false,
+                focusTimelineId: '',
+                focusTimelineTitle: ''
+            })
+        }
+    } 
 
     return (
         <ul className='timeline-thumbnails'>
             {
                 timelines.map(timeline => {
-                    console.log(timeline.deadline)
                     return (
                         <li className='thumbnail' key={ timeline._id }>
                             <div className='timeline-header'>
@@ -34,7 +57,7 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
                                 }
                                 {
                                     timeline.deadline === undefined &&
-                                    <img    onClick={ () => setDashboardProps({ dateTimeSelector: !dashboardProps.dateTimeSelector }) }
+                                    <img    onClick={ () => handleDeadlineClick(timeline._id, timeline.title) }
                                             src={ add_deadline_icon }
                                             id='deadline_icon'
                                             alt='deadline icon'

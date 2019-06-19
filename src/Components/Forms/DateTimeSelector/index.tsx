@@ -3,26 +3,13 @@ import './datetimeselector.css'
 import React, { useContext, useState } from 'react'
 import DashboardContext from '../../Pages/Dashboard/dashboardContext'
 
-const DateTimeSelector: React.FC = () => {
-    interface IMonth {
-        month: string,
-        monthShort: string,
-        dayCount: number
-    }
-    const months: IMonth[] = [
-        {month: 'January', monthShort: 'JAN', dayCount: 31},
-        {month: 'February', monthShort: 'FEB', dayCount: 29},
-        {month: 'March', monthShort: 'MAR', dayCount: 31},
-        {month: 'April', monthShort: 'APR', dayCount: 30},
-        {month: 'May', monthShort: 'MAY', dayCount: 31},
-        {month: 'June', monthShort: 'JUN', dayCount: 30},
-        {month: 'July', monthShort: 'JUL', dayCount: 31},
-        {month: 'August', monthShort: 'AUG', dayCount: 31},
-        {month: 'September', monthShort: 'SEP', dayCount: 30},
-        {month: 'October', monthShort: 'OCT', dayCount: 31},
-        {month: 'November', monthShort: 'NOV', dayCount: 30},
-        {month: 'December', monthShort: 'DEC', dayCount: 31}
-    ]
+import { months, IMonth } from './data'
+
+interface IDateTimeSelectorProps {
+    timelineId: string,
+    timelineTitle: string
+}
+const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineTitle }) => {
 
     const [ selectedMonth, setSelectedMonth ] = useState<IMonth>({month: 'January', monthShort: 'JAN', dayCount: 31})
     const [ selectedDay, setSelectedDay ] = useState<number>(0)
@@ -42,6 +29,7 @@ const DateTimeSelector: React.FC = () => {
     }
     return (
         <form className={`date-time-selector ${ animation }`}>
+            <h3 className='timeline-title'>{ timelineTitle }</h3>
             <div className='months'>
                 {
                     months.map(month => {
@@ -59,19 +47,23 @@ const DateTimeSelector: React.FC = () => {
                 }
             </div>
             <div className='time'>
-                <input  name='hours'
-                        id='hours'
-                        type='text'
-                        value={ hours }
-                        onChange={ (e:any) => setHours(e.target.value) }
-                />
+                <div className='date-form-group'>
+                    <input  name='hours'
+                            id='hours'
+                            type='text'
+                            value={ hours }
+                            onChange={ (e:any) => setHours(e.target.value) }
+                    />
+                </div>
                 <p>:</p>
-                <input  name='minutes'
-                        id='minutes'
-                        type='text'
-                        value={ minutes }
-                        onChange={ (e:any) => setMinutes(e.target.value) }
-                />
+                <div className='date-form-group'>
+                    <input  name='minutes'
+                            id='minutes'
+                            type='text'
+                            value={ minutes }
+                            onChange={ (e:any) => setMinutes(e.target.value) }
+                    />
+                </div>
             </div>
         </form>
     )

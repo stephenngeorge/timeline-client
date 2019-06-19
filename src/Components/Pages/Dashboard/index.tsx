@@ -10,7 +10,9 @@ import { DateTimeSelector } from '../../Forms'
 
 const Dashboard: React.FC<IDashboardProps> = ({user}) => {
     const initDashboard = {
-        dateTimeSelector: false
+        dateTimeSelector: false,
+        focusTimelineId: '',
+        focusTimelineTitle: ''
     }
     const [dashboardProps, setDashboardProps] = useState(initDashboard)
 
@@ -21,7 +23,9 @@ const Dashboard: React.FC<IDashboardProps> = ({user}) => {
         }}>
             <div>
                 <Profile { ...user } />
-                <DateTimeSelector />
+                <DateTimeSelector   timelineId={ dashboardProps.focusTimelineId || '' }
+                                    timelineTitle={ dashboardProps.focusTimelineTitle || '' }
+                />
             </div>
         </DashboardContext.Provider>
     )

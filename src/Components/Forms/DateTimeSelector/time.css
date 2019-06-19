@@ -10,7 +10,7 @@
     height: 3rem;
 }
 
-.time > input
+.date-form-group > input
 {
     height: 2rem;
     width: 3rem;
@@ -25,13 +25,13 @@
 
     transition: background-color .4s;
 }
-.time > input:focus
+.date-form-group > input:focus
 {
     outline: none;
     background-color: var(--red-faint);
 }
 
-.time > p
+.date-form-group > p
 {
     font-family: var(--font-body);
     font-size: 1.4rem;
