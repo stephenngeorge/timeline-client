@@ -1,7 +1,10 @@
 import './datetimeselector.css'
 
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import DashboardContext from '../../Pages/Dashboard/dashboardContext'
+
+// asset imports
+import { add_deadline_icon_white } from '../../../assets'
 
 import { months, IMonth } from './data'
 
@@ -11,10 +14,31 @@ interface IDateTimeSelectorProps {
 }
 const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineTitle }) => {
 
-    const [ selectedMonth, setSelectedMonth ] = useState<IMonth>({month: 'January', monthShort: 'JAN', dayCount: 31})
-    const [ selectedDay, setSelectedDay ] = useState<number>(0)
+    const [ selectedMonth, setSelectedMonth ] = useState<IMonth>({month: '', monthShort: '', dayCount: 31})
+    const [ selectedDay, setSelectedDay ] = useState<number>(50)
     const [ hours, setHours ] = useState<string>('')
     const [ minutes, setMinutes ] = useState<string>('')
+    const [ disabled, setDisabled ] = useState<boolean>(true)
+
+    useEffect(() => {
+        const monthNode = document.querySelector('#progress-month')
+        const dayNode = document.querySelector('#progress-day')
+        const finalNode = document.querySelector('#progress-complete')
+
+        if (monthNode !== null && dayNode !== null && finalNode !== null) {
+            selectedMonth.monthShort === '' ? monthNode.classList.remove('completed') : monthNode.classList.add('completed')
+            selectedDay === 50 ? dayNode.classList.remove('completed') : dayNode.classList.add('completed')
+            
+            if (hours !== '' && minutes !== '' && monthNode.classList.contains('completed') && dayNode.classList.contains('completed')) {
+                setDisabled(false)
+                finalNode.classList.add('validform')
+            }
+            else {
+                setDisabled(true)
+                finalNode.classList.remove('validform')
+            }
+        }
+    }, [selectedMonth, selectedDay, hours, minutes])
 
     const days = []
     for (let i = 0; i < selectedMonth.dayCount; i++) {
@@ -70,6 +94,14 @@ const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineTitle }) =
                     <p className='tip'>use 24hr clock times</p>
                 </div>
             </form>
+
+            <div className='deadline-progress'>
+                <div id='progress-month' className='deadline-progress-node'></div>
+                <div id='progress-day' className='deadline-progress-node'></div>
+                <button disabled={ disabled } id='progress-complete' className='deadline-progress-node'>
+                    <img src={ add_deadline_icon_white } alt='add deadline' />
+                </button>
+            </div>
         </div>
     )
 }

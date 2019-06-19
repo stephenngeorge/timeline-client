@@ -1,0 +1,104 @@
+.deadline-progress
+{
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 2rem 0;
+    height: 100vh;
+    flex-basis: 25%;
+}
+.deadline-progress:after
+{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 100vh;
+    border-right: 2px solid #000;
+
+    z-index: -10;
+}
+
+.deadline-progress-node
+{
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #000;
+    border-radius: 50%;
+
+    background-color: #777;
+
+    transition: all .4s;
+}
+
+.completed
+{
+    transform: scale(1.6, 1.6);
+    background-color: var(--node-problem);
+}
+
+#progress-complete
+{
+    position: relative;
+    height: 2.8rem;
+    width: 2.8rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#progress-complete:not([disabled]):hover
+{
+    cursor: pointer;
+}
+
+#progress-complete:not([disabled]):after
+{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 2px solid var(--node-complete);
+    border-radius: 50%;
+
+    z-index: -10;
+
+    animation: deadline_ripple 2s infinite;
+}
+
+.validform
+{
+    background-color: var(--node-complete);
+}
+
+#progress-complete > img
+{
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+@keyframes deadline_ripple {
+    0%
+    {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+    40%
+    {
+        opacity: 1;
+    }
+    80%, 100%
+    {
+        opacity: 0;
+        transform: scale(1.6, 1.6);
+    }
+}

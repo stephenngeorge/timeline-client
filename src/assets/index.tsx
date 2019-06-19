@@ -1,4 +1,5 @@
 import add_deadline_icon from './add_deadline_icon.png'
+import add_deadline_icon_white from './add_deadline_icon--white.png'
 import create_icon_white from './create_icon--white.png'
 import create_icon from './create_icon.png'
 import deadline_icon from './deadline_icon.png'
@@ -11,6 +12,7 @@ import signup_icon from './signup_icon.png'
 
 export {
     add_deadline_icon,
+    add_deadline_icon_white,
     create_icon_white,
     create_icon,
     deadline_icon,

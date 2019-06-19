@@ -12,6 +12,7 @@
     z-index: 20000;
 
     display: flex;
+    justify-content: space-between;
 }
 
 .date-time-selector
@@ -69,3 +70,4 @@
 @import './months.css';
 @import './days.css';
 @import './time.css';
+@import './formprogress.css';
