@@ -55,6 +55,7 @@
     font-family: var(--font-body);
     font-weight: 700;
     font-size: .8rem;
+    color: #777;
     letter-spacing: 2px;
 
     transition: all .4s ease-out;

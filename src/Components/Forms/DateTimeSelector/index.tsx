@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import DashboardContext from '../../Pages/Dashboard/dashboardContext'
 
 // asset imports
-import { add_deadline_icon_white } from '../../../assets'
+import { add_deadline_icon_white, less_icon } from '../../../assets'
 
 import { months, IMonth } from './data'
 
@@ -14,6 +14,8 @@ interface IDateTimeSelectorProps {
 }
 const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineTitle }) => {
 
+    const currentYear = new Date().getFullYear()
+    const [ year, setYear ] = useState<number>(currentYear)
     const [ selectedMonth, setSelectedMonth ] = useState<IMonth>({month: '', monthShort: '', dayCount: 31})
     const [ selectedDay, setSelectedDay ] = useState<number>(50)
     const [ hours, setHours ] = useState<string>('')
@@ -55,6 +57,15 @@ const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineTitle }) =
         <div className={`date-time-selector_wrapper ${ animation }`}>
             <form className='date-time-selector'>
                 <h3 className='timeline-title'>{ timelineTitle } deadline</h3>
+                <div className='year'>
+                    <p className='year-button' onClick={ () => setYear(year - 1) }>
+                        <img src={ less_icon } alt='minus one year' id='year-one-less' />
+                    </p>
+                    <p className='year-value'>{ year }</p>
+                    <p className='year-button' onClick={ () => setYear(year + 1) }>
+                        <img src={ less_icon } alt='plus one year' id='year-one-more' />
+                    </p>
+                </div>
                 <div className='months'>
                     {
                         months.map(month => {

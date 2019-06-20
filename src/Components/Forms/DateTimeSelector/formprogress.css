@@ -57,6 +57,10 @@
 {
     cursor: pointer;
 }
+#progress-complete:not([disabled]):focus
+{
+    outline: none;
+}
 
 #progress-complete:not([disabled]):after
 {

@@ -67,6 +67,7 @@
     }
 }
 
+@import './year.css';
 @import './months.css';
 @import './days.css';
 @import './time.css';
