@@ -4,10 +4,12 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import DashboardContext from '../dashboardContext'
 
+// component imports
+import Countdown from './Countdown'
 import TimelineSummary from '../TimelineSummary'
 
 // asset imports
-import { add_deadline_icon, deadline_icon } from '../../../../assets'
+import { add_deadline_icon_grey } from '../../../../assets'
 
 import { ITimeline } from '../../../../interfaces'
 interface ITimelineThumbnailProps {
@@ -40,7 +42,7 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
                 focusTimelineTitle: ''
             })
         }
-    } 
+    }
 
     return (
         <ul className='timeline-thumbnails'>
@@ -53,18 +55,12 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
                                 <p id='timeline-nodes-length'>({ timeline.nodes.length })</p>
                                 {
                                     timeline.deadline !== undefined &&
-                                    <div>
-                                        <p>{ timeline.deadline }</p>
-                                        <img    src={ deadline_icon }
-                                                id='deadline_icon'
-                                                alt='deadline icon'
-                                        />
-                                    </div>
+                                    <Countdown deadline={ timeline.deadline } />
                                 }
                                 {
                                     timeline.deadline === undefined &&
                                     <img    onClick={ () => handleDeadlineClick(timeline._id, timeline.title) }
-                                            src={ add_deadline_icon }
+                                            src={ add_deadline_icon_grey }
                                             id='deadline_icon'
                                             alt='deadline icon'
                                     />
