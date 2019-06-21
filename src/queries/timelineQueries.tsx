@@ -31,3 +31,21 @@ export const addTimeline = async (title: string, description: string) => {
 
     return response
 }
+
+// ADD DEADLINE TO GIVEN TIMELINE
+export const addDeadline = async (timelineId: string, datestring: Date) => {
+    const udpatedTimeline = await fetch(`${url}/timelines/${timelineId}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({
+            deadline: datestring
+        })
+    })
+    // parse response
+    const response = await udpatedTimeline.json()
+
+    return response
+}

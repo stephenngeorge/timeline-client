@@ -2,7 +2,8 @@ import './datetimeselector.css'
 
 import React, { useContext, useEffect, useState } from 'react'
 import DashboardContext from '../../Pages/Dashboard/dashboardContext'
-
+// query imports
+import { timelineQueries } from '../../../queries'
 // asset imports
 import { add_deadline_icon_white, less_icon } from '../../../assets'
 
@@ -12,11 +13,11 @@ interface IDateTimeSelectorProps {
     timelineId: string,
     timelineTitle: string
 }
-const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineTitle }) => {
+const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineId, timelineTitle }) => {
 
     const currentYear = new Date().getFullYear()
     const [ year, setYear ] = useState<number>(currentYear)
-    const [ selectedMonth, setSelectedMonth ] = useState<IMonth>({month: '', monthShort: '', dayCount: 31})
+    const [ selectedMonth, setSelectedMonth ] = useState<IMonth>({month: '', monthShort: '', index: 0, dayCount: 31})
     const [ selectedDay, setSelectedDay ] = useState<number>(50)
     const [ hours, setHours ] = useState<string>('')
     const [ minutes, setMinutes ] = useState<string>('')
@@ -47,12 +48,24 @@ const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineTitle }) =
         days.push(i)
     }
 
-    const { dashboardProps } = useContext(DashboardContext)
+    const { dashboardProps, setDashboardProps } = useContext(DashboardContext)
     let animation = ''
     const selector = document.querySelector('.date-time-selector')
     if (selector !== null) {
         dashboardProps.dateTimeSelector === true ? animation = 'slide-in' : animation = 'slide-out'
     }
+
+
+    const handleSubmit = async () => {
+        const deadline = new Date(Date.UTC(year, selectedMonth.index, selectedDay, Number(hours), Number(minutes)))
+        await timelineQueries.addDeadline(timelineId, deadline)
+        setDashboardProps({
+            dateTimeSelector: false,
+            focusTimelineId: '',
+            focusTimelineTitle: ''
+        })
+    }
+
     return (
         <div className={`date-time-selector_wrapper ${ animation }`}>
             <form className='date-time-selector'>
@@ -78,7 +91,7 @@ const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineTitle }) =
                     {
                         days.map(day => {
                             const chosenDay = selectedDay === day ? 'chosen-day' : ''
-                            return <p onClick={ () => setSelectedDay(day) } className={`day_single ${chosenDay}`} key={day}>{day + 1}</p>
+                            return <p onClick={ () => setSelectedDay(day + 1) } className={`day_single ${chosenDay}`} key={day}>{day + 1}</p>
                         })
                     }
                 </div>
@@ -109,7 +122,7 @@ const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineTitle }) =
             <div className='deadline-progress'>
                 <div id='progress-month' className='deadline-progress-node'></div>
                 <div id='progress-day' className='deadline-progress-node'></div>
-                <button disabled={ disabled } id='progress-complete' className='deadline-progress-node'>
+                <button onClick={ handleSubmit } disabled={ disabled } id='progress-complete' className='deadline-progress-node'>
                     <img src={ add_deadline_icon_white } alt='add deadline' />
                 </button>
             </div>

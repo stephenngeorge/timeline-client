@@ -53,7 +53,13 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
                                 <p id='timeline-nodes-length'>({ timeline.nodes.length })</p>
                                 {
                                     timeline.deadline !== undefined &&
-                                    <img src={ deadline_icon } id='deadline_icon' alt='deadline icon' />
+                                    <div>
+                                        <p>{ timeline.deadline }</p>
+                                        <img    src={ deadline_icon }
+                                                id='deadline_icon'
+                                                alt='deadline icon'
+                                        />
+                                    </div>
                                 }
                                 {
                                     timeline.deadline === undefined &&
