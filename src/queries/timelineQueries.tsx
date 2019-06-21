@@ -13,6 +13,18 @@ export const fetchTimeline = async (timelineId: string) => {
     return response
 }
 
+export const fetchUserTimelines = async (userId: string) => {
+    const timelines = await fetch(`${url}/timelines/user/${userId}`, {
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+    // parse response
+    const response = await timelines.json()
+
+    return response
+}
+
 // ADD TIMELINE, CALLED FROM ADDTIMELINE FORM
 export const addTimeline = async (title: string, description: string) => {
     const newTimeline = await fetch(`${url}/timelines`, {

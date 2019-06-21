@@ -2,6 +2,7 @@ import './datetimeselector.css'
 
 import React, { useContext, useEffect, useState } from 'react'
 import DashboardContext from '../../Pages/Dashboard/dashboardContext'
+import { AuthContext, types } from '../../../store'
 // query imports
 import { timelineQueries } from '../../../queries'
 // asset imports
@@ -55,6 +56,7 @@ const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineId, timeli
         dashboardProps.dateTimeSelector === true ? animation = 'slide-in' : animation = 'slide-out'
     }
 
+    const { dispatch, authState } = useContext(AuthContext)
 
     const handleSubmit = async () => {
         const deadline = new Date(Date.UTC(year, selectedMonth.index, selectedDay, Number(hours), Number(minutes)))
@@ -63,6 +65,12 @@ const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineId, timeli
             dateTimeSelector: false,
             focusTimelineId: '',
             focusTimelineTitle: ''
+        })
+
+        const updatedTimelines = await timelineQueries.fetchUserTimelines(authState.data._id)
+        dispatch({
+            type: types.REFRESH_TIMELINES,
+            payload: updatedTimelines.data
         })
     }
 
@@ -90,7 +98,7 @@ const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineId, timeli
                 <div className='days'>
                     {
                         days.map(day => {
-                            const chosenDay = selectedDay === day ? 'chosen-day' : ''
+                            const chosenDay = selectedDay === day + 1 ? 'chosen-day' : ''
                             return <p onClick={ () => setSelectedDay(day + 1) } className={`day_single ${chosenDay}`} key={day}>{day + 1}</p>
                         })
                     }

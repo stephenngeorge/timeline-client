@@ -23,8 +23,8 @@ const Countdown: React.FC<ICountdownProps> = ({ deadline }) => {
 
             const days = difference >= 86400 ? Math.floor(difference / 86400) : 0
             const hours = days >= 1 ? Math.floor((difference - 86400 * days) / 3600) : difference >= 3600 ? Math.floor(difference / 3600) : 0
-            const minutes = hours >= 1 ? Math.floor((difference - ((86400 * days) + (3600 * hours))) / 60) : difference >= 60 ? Math.floor(difference / 60) : 0
-            const seconds = minutes >= 1 ? Math.floor(difference - ((86400 * days) + (3600 * hours) + (60 * minutes))) : Math.floor(difference)
+            const minutes = days >= 1 || hours >= 1 ? Math.floor((difference - ((86400 * days) + (3600 * hours))) / 60) : difference >= 60 ? Math.floor(difference / 60) : 0
+            const seconds = days >= 1 || hours >= 1 || minutes >= 1 ? Math.floor(difference - ((86400 * days) + (3600 * hours) + (60 * minutes))) : Math.floor(difference)
 
             setCountdown({days, hours, minutes, seconds})
 

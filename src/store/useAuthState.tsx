@@ -34,6 +34,9 @@ export default () => {
                 return setAuthState({...authState, data: {...authState.data, timelines: [...authState.data.timelines, payload]}})
             case types.ADD_NODE:
                 return {...authState}
+            case types.REFRESH_TIMELINES:
+                console.log(type, payload)
+                return setAuthState({...authState, data: {...authState.data, timelines: payload}})
             default:
                 return {...authState}
         }
