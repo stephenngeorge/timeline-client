@@ -17,6 +17,8 @@ const Dashboard: React.FC<IDashboardProps> = ({user}) => {
     }
     const [dashboardProps, setDashboardProps] = useState(initDashboard)
 
+    // consume dashboard context (has props to control different form states)
+    // all dashboard children can access & set these props
     return (
         <DashboardContext.Provider value={{
             dashboardProps,

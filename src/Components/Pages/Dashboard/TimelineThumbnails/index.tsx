@@ -18,11 +18,14 @@ interface ITimelineThumbnailProps {
     addTimelineForm: boolean
 }
 const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm, timelines}) => {
-
+    // access local dashboard context
+    // will need to control deadline form toggle
     const { dashboardProps, setDashboardProps } = useContext(DashboardContext)
-
+    
+    // bring date time selector onto screen or remove it depending on current state & what has been clicked
     const handleDeadlineClick = (timelineId: string, timelineTitle: string) => {
         const { dateTimeSelector, focusTimelineId } = dashboardProps
+        // when dateTimeSelector is off-screen & timeline is clicked that is not currently in 'focus'
         if (!dateTimeSelector && focusTimelineId !== timelineId) {
             setDashboardProps({
                 ...dashboardProps,
@@ -31,6 +34,7 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm,
                 focusTimelineTitle: timelineTitle
             })
         }
+        // when dateTimeSelector is on screen & timeline is clicked that is not currently in 'focus'
         else if (!!dateTimeSelector && focusTimelineId !== timelineId) {
             setDashboardProps({
                 ...dashboardProps,
@@ -39,6 +43,7 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm,
                 focusTimelineTitle: timelineTitle
             })
         }
+        // when dateTimeSelector is on screen & same timeline is clicked again
         else if (!!dateTimeSelector && focusTimelineId === timelineId) {
             setDashboardProps({
                 ...dashboardProps,
@@ -48,7 +53,7 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm,
             })
         }
     }
-
+    // determine animation based on props
     const animate = !!addTimelineForm ? 'appear' : 'disappear'
     return (
         <ul className='timeline-thumbnails'>

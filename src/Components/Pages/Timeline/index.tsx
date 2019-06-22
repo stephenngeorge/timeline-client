@@ -28,9 +28,10 @@ const Timeline: React.FC<RouteComponentProps<IParams>> = ({match}) => {
         const fetchedTimeline = await timelineQueries.fetchTimeline(timelineId)
         setTimeline(fetchedTimeline.data)
     }
+    // make api call
     useEffect(() => {
         fetchTimeline(match.params.id)
-    }, [match.params.id])
+    }, [match.params.id]) // <-- effect runs whenever timelneId param changes
 
     return (
         <div>

@@ -14,9 +14,9 @@ interface IProfileControlsProps {
 
 const ProfileControls: React.FC<IProfileControlsProps> = ({setAddTimelineForm, addTimelineForm}) => {
     const [label, setLabel] = useState('')
-
+    // consume local dashboard state
     const { dashboardProps, setDashboardProps } = useContext(DashboardContext)
-
+    // control label that appears next to controls
     useEffect(() => {
         const   createTimelineButton = document.getElementById('button-createTimeline'),
                 editProfileButton = document.getElementById('button-editProfile'),
@@ -36,7 +36,7 @@ const ProfileControls: React.FC<IProfileControlsProps> = ({setAddTimelineForm, a
             editProfileButton.addEventListener('mouseout', removeLabel)
             accountSettingsButton.addEventListener('mouseout', removeLabel)
         }
-
+        // clean up function to remove event listeners when component unmounts
         return () => {
             if (createTimelineButton !== null && editProfileButton !== null && accountSettingsButton !== null) {
                 createTimelineButton.removeEventListener('mouseover', timelineLabel)
@@ -49,7 +49,7 @@ const ProfileControls: React.FC<IProfileControlsProps> = ({setAddTimelineForm, a
                 accountSettingsButton.removeEventListener('mouseout', removeLabel)
             }
         }
-    }, [])
+    }, []) // <-- effect runs once on component mount
 
     return (
         <div className='profile-header__controls'>
