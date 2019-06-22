@@ -50,10 +50,9 @@ const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineId, timeli
     }
 
     const { dashboardProps, setDashboardProps } = useContext(DashboardContext)
-    let animation = ''
-    const selector = document.querySelector('.date-time-selector')
-    if (selector !== null) {
-        dashboardProps.dateTimeSelector === true ? animation = 'slide-in' : animation = 'slide-out'
+    const selector = document.querySelector('.date-time-selector_wrapper')
+    if (selector !== null && !dashboardProps.addTimelineForm) {
+        dashboardProps.dateTimeSelector === true ? selector.classList.add('slide-in') : selector.classList.remove('slide-in')
     }
 
     const { dispatch, authState } = useContext(AuthContext)
@@ -62,6 +61,7 @@ const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineId, timeli
         const deadline = new Date(Date.UTC(year, selectedMonth.index, selectedDay, Number(hours), Number(minutes)))
         await timelineQueries.addDeadline(timelineId, deadline)
         setDashboardProps({
+            ...dashboardProps,
             dateTimeSelector: false,
             focusTimelineId: '',
             focusTimelineTitle: ''
@@ -75,7 +75,7 @@ const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineId, timeli
     }
 
     return (
-        <div className={`date-time-selector_wrapper ${ animation }`}>
+        <div className={`date-time-selector_wrapper`}>
             <form className='date-time-selector'>
                 <h3 className='timeline-title'>{ timelineTitle } deadline</h3>
                 <div className='year'>

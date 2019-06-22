@@ -1,7 +1,8 @@
 import './profilecontrols.css'
 import './typography.css'
 
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react'
+import DashboardContext from '../dashboardContext'
 
 // asset imports
 import { create_icon_white, edit_icon_white, settings_icon_white } from '../../../../assets'
@@ -13,6 +14,8 @@ interface IProfileControlsProps {
 
 const ProfileControls: React.FC<IProfileControlsProps> = ({setAddTimelineForm, addTimelineForm}) => {
     const [label, setLabel] = useState('')
+
+    const { dashboardProps, setDashboardProps } = useContext(DashboardContext)
 
     useEffect(() => {
         const   createTimelineButton = document.getElementById('button-createTimeline'),
@@ -51,7 +54,10 @@ const ProfileControls: React.FC<IProfileControlsProps> = ({setAddTimelineForm, a
     return (
         <div className='profile-header__controls'>
             <p id='controls-label'>{ label }</p>
-            <button id='button-createTimeline' onClick={ () => setAddTimelineForm(!addTimelineForm) }>
+            <button id='button-createTimeline' onClick={ () => {
+                setAddTimelineForm(!addTimelineForm)
+                setDashboardProps({...dashboardProps, addTimelineForm: !dashboardProps.addTimelineForm})
+            } }>
                 <img src={ create_icon_white } alt='add timeline' />
             </button>
             <button id='button-editProfile'>

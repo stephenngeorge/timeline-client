@@ -25,6 +25,7 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm,
         const { dateTimeSelector, focusTimelineId } = dashboardProps
         if (!dateTimeSelector && focusTimelineId !== timelineId) {
             setDashboardProps({
+                ...dashboardProps,
                 dateTimeSelector: !dateTimeSelector,
                 focusTimelineId: timelineId,
                 focusTimelineTitle: timelineTitle
@@ -32,6 +33,7 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm,
         }
         else if (!!dateTimeSelector && focusTimelineId !== timelineId) {
             setDashboardProps({
+                ...dashboardProps,
                 dateTimeSelector: true,
                 focusTimelineId: timelineId,
                 focusTimelineTitle: timelineTitle
@@ -39,6 +41,7 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm,
         }
         else if (!!dateTimeSelector && focusTimelineId === timelineId) {
             setDashboardProps({
+                ...dashboardProps,
                 dateTimeSelector: false,
                 focusTimelineId: '',
                 focusTimelineTitle: ''
@@ -68,7 +71,9 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm,
                                 }
                                 {
                                     timeline.deadline === undefined &&
-                                    <img    onClick={ () => handleDeadlineClick(timeline._id, timeline.title) }
+                                    <img    onClick={ () => {
+                                                if (!dashboardProps.addTimelineForm) handleDeadlineClick(timeline._id, timeline.title)    
+                                            } }
                                             src={ add_deadline_icon_grey }
                                             id='deadline_icon'
                                             alt='deadline icon'

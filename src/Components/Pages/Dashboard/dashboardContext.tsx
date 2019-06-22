@@ -2,6 +2,7 @@ import { createContext, Dispatch, SetStateAction } from 'react'
 
 interface IDashboardProps {
     dateTimeSelector: boolean,
+    addTimelineForm: boolean,
     focusTimelineId: string,
     focusTimelineTitle: string
 }
@@ -14,6 +15,7 @@ interface IDashboard {
 const DashboardContext = createContext<IDashboard>({
     dashboardProps: {
         dateTimeSelector: false,
+        addTimelineForm: false,
         focusTimelineId: '',
         focusTimelineTitle: ''
     },

@@ -17,7 +17,9 @@ const Profile: React.FC<IUser> = ({username, timelines}) => {
                 <h2>{ username }</h2>
                 <ProfileControls setAddTimelineForm={ setAddTimelineForm } addTimelineForm={ addTimelineForm } />
             </div>
-            <TimelineThumbnails timelines={ timelines } addTimelineForm={ addTimelineForm } />
+            <TimelineThumbnails timelines={ timelines }
+                                addTimelineForm={ addTimelineForm } 
+            />
         </div>
     )
 }

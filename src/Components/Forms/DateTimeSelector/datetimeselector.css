@@ -13,6 +13,8 @@
 
     display: flex;
     justify-content: space-between;
+
+    transition: right .4s ease-out;
 }
 
 .date-time-selector
@@ -36,35 +38,7 @@
 
 .slide-in
 {
-    animation: slidein .4s ease-out forwards;
-}
-.slide-out
-{
-    animation: slideout .4s ease-in forwards;
-}
-
-@keyframes slidein
-{
-    0%
-    {
-        right: -45%;
-    }
-    100%
-    {
-        right: 0;
-    }
-}
-
-@keyframes slideout
-{
-    0%
-    {
-        right: 0;
-    }
-    100%
-    {
-        right: -45%;
-    }
+    right: 0;
 }
 
 @import './year.css';

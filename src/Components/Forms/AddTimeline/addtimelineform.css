@@ -4,7 +4,7 @@
     left: 0;
     width: 25rem;
     max-width: 42%;
-    min-width: 18rem;
+    min-width: 21rem;
     margin: 2rem 2rem 0 0;
     padding: 1rem;
     box-sizing: border-box;
@@ -68,7 +68,7 @@
 .add-timeline-form > .form-group > input
 {
     width: 50%;
-    padding: .2rem .4rem;
+    padding: .4rem;
 
     font-family: var(--font-body);
     font-weight: 700;
@@ -77,7 +77,7 @@
 
     color: var(--accent-color);
     border: none;
-    border-bottom: 2px solid #777;
+    border-bottom: 1px solid #777;
 
     margin-bottom: .4rem;
 }
@@ -86,11 +86,16 @@
     outline: none;
 }
 
+.add-timeline-form > .form-group > #description
+{
+    font-weight: 300;
+}
+
 .add-timeline-form > .form-group > label
 {
     position: absolute;
     right: 48%;
-    line-height: 1.2rem;
+    line-height: 1.4rem;
     padding: .2rem 0;
 
     font-family: var(--font-body);
@@ -134,6 +139,11 @@
 {
     cursor: pointer;
 }
+#add-timeline:focus
+{
+    outline: none;
+}
+
 #add-timeline > img
 {
     height: 1rem;

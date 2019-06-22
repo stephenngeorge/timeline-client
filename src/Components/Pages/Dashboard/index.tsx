@@ -11,6 +11,7 @@ import { DateTimeSelector } from '../../Forms'
 const Dashboard: React.FC<IDashboardProps> = ({user}) => {
     const initDashboard = {
         dateTimeSelector: false,
+        addTimelineForm: false,
         focusTimelineId: '',
         focusTimelineTitle: ''
     }
