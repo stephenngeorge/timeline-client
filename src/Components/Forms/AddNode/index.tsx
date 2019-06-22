@@ -1,13 +1,14 @@
 import React, {  useContext, useState } from 'react'
 import { AuthContext, types } from '../../../store'
 
-import { nodeQueries } from '../../../queries'
+import { nodeQueries, timelineQueries } from '../../../queries'
 
 interface IAddNodeProps {
+    author: string,
     timelineId: string,
     fetchTimeline: (id: string) => void
 }
-const AddNode: React.FC<IAddNodeProps> = ({timelineId, fetchTimeline}) => {
+const AddNode: React.FC<IAddNodeProps> = ({author, timelineId, fetchTimeline}) => {
     const { dispatch } = useContext(AuthContext)
 
     const [title, setTitle] = useState('')
@@ -16,6 +17,12 @@ const AddNode: React.FC<IAddNodeProps> = ({timelineId, fetchTimeline}) => {
     const handleSubmit = async () => {
         await nodeQueries.addNode(title, description, timelineId)
         dispatch({ type: types.ADD_NODE })
+        
+        const updatedTimelines = await timelineQueries.fetchUserTimelines(author)
+        dispatch({
+            type: types.REFRESH_TIMELINES,
+            payload: updatedTimelines.data
+        })
     }
 
     return (

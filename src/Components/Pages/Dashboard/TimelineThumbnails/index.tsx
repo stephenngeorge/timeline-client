@@ -7,15 +7,17 @@ import DashboardContext from '../dashboardContext'
 // component imports
 import Countdown from './Countdown'
 import TimelineSummary from '../TimelineSummary'
+import { AddTimeline } from '../../../Forms'
 
 // asset imports
 import { add_deadline_icon_grey } from '../../../../assets'
 
 import { ITimeline } from '../../../../interfaces'
 interface ITimelineThumbnailProps {
-    timelines: ITimeline[]
+    timelines: ITimeline[],
+    addTimelineForm: boolean
 }
-const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
+const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm, timelines}) => {
 
     const { dashboardProps, setDashboardProps } = useContext(DashboardContext)
 
@@ -44,8 +46,15 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
         }
     }
 
+    const animate = !!addTimelineForm ? 'appear' : 'disappear'
     return (
         <ul className='timeline-thumbnails'>
+            {
+                !!addTimelineForm &&
+                <li className={`${animate} form-thumbnail`}>
+                    <AddTimeline animate={ animate || '' } />
+                </li>
+            }
             {
                 timelines.map(timeline => {
                     return (

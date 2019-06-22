@@ -29,7 +29,8 @@ const Countdown: React.FC<ICountdownProps> = ({ deadline }) => {
             setCountdown({days, hours, minutes, seconds})
 
             const condition = (new Date(deadline).getTime() - Date.now()) / 1000
-            if (condition <= 3600) setColour('var(--node-problem)')
+            if (condition < 0) setColour('#000')
+            else if (condition <= 3600) setColour('var(--node-problem)')
             else if (condition < 86400) setColour('var(--node-pending)')
             else setColour('var(--node-complete)')
         }

@@ -21,7 +21,7 @@ const Timeline: React.FC<RouteComponentProps<IParams>> = ({match}) => {
         author: '',
         members: []
     }
-    const [timeline, setTimeline] = useState<ITimeline>(initialState)
+    const [ timeline, setTimeline ] = useState<ITimeline>(initialState)
 
     // get timeline on component mount from params.timelineId
     const fetchTimeline = async (timelineId: string) => {
@@ -35,7 +35,7 @@ const Timeline: React.FC<RouteComponentProps<IParams>> = ({match}) => {
     return (
         <div>
             <h3>{ timeline.title }</h3>
-            <AddNode timelineId={ match.params.id } fetchTimeline={ fetchTimeline } />
+            <AddNode timelineId={ match.params.id } fetchTimeline={ fetchTimeline } author={ timeline.author } />
             {
                 timeline.nodes.length > 0 &&
                 timeline.nodes.map(node => <Node key={ node._id } { ...node } />)
