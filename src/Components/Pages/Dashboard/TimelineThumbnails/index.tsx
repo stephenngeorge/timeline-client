@@ -58,12 +58,15 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm,
     return (
         <ul className='timeline-thumbnails'>
             {
+                // show form when addTimelineForm is true, pass in .appear class
+                // the empty string fallback catches initial render
                 !!addTimelineForm &&
                 <li className={`${animate} form-thumbnail`}>
                     <AddTimeline animate={ animate || '' } />
                 </li>
             }
             {
+                // return thumbnail for each timeline
                 timelines.map(timeline => {
                     return (
                         <li className='thumbnail' key={ timeline._id }>
