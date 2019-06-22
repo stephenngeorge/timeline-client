@@ -1,0 +1,36 @@
+.appear
+{
+    animation: fade-in 1s forwards;
+}
+.disappear
+{
+    animation: fade-out 2s forwards;
+}
+
+@keyframes fade-in {
+    0%
+    {
+        opacity: 0;
+        transform: scaleY(.2);
+        transform-origin: top center;
+    }
+    20%
+    {
+        opacity: .6;
+        transform: scaleY(1);
+    }
+    100%
+    {
+        opacity: 1;
+    }
+}
+@keyframes fade-out {
+    0%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
+    }
+}

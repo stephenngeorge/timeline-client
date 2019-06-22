@@ -11,28 +11,32 @@ import { authQueries } from '../../../queries'
 
 const Signup: React.FC<RouteComponentProps> = ({history}) => {
 
+    // control form inputs & button disabled state & error messages
     const [username, setUsername] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [passwordConf, setPasswordConf] = useState<string>('')
     const [error, setError] = useState<string>('')
     const [disabled, setDisabled] = useState<boolean>(true)
 
+    // handle form progress nodes
     useEffect(() => {
+        // access .timeline-button nodes
         const usernameNode = document.querySelector('#username-node')
         const passwordNode = document.querySelector('#password-node')
         const passwordConfNode = document.querySelector('#passwordConf-node')
-
+        // check dom elements exist
         if (usernameNode !== null && passwordNode !== null && passwordConfNode !== null) {
+            // add .complete class to every node whose corresponding input has value
             username === '' ? usernameNode.classList.remove('complete') : usernameNode.classList.add('complete')
             password === '' ? passwordNode.classList.remove('complete') : passwordNode.classList.add('complete')
             passwordConf === '' || passwordConf !== password ? passwordConfNode.classList.remove('complete') : passwordConfNode.classList.add('complete')
-
+            // if all form fields are filled in, enable button
             if (usernameNode.classList.contains('complete') && passwordNode.classList.contains('complete') && passwordConfNode.classList.contains('complete')) {
                 setDisabled(false)
             }
             else setDisabled(true)
         }
-    }, [username, password, passwordConf, disabled])
+    }, [username, password, passwordConf, disabled]) // <-- effect will run every time form inputs are changed
 
     return (
         <form className='form form-auth' onSubmit={ async (e: any) => {
@@ -90,5 +94,5 @@ const Signup: React.FC<RouteComponentProps> = ({history}) => {
         </form>
     )
 }
-
+// components needs access to history for rerouting to login page on submission
 export default withRouter(Signup)

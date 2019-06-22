@@ -10,14 +10,17 @@ interface IAddNodeProps {
 }
 const AddNode: React.FC<IAddNodeProps> = ({author, timelineId, fetchTimeline}) => {
     const { dispatch } = useContext(AuthContext)
-
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
+    // control form inputs & button disabled state
+    const [title, setTitle] = useState<string>('')
+    const [description, setDescription] = useState<string>('')
+    const [disabled, setDisabled] = useState<boolean>(true)
 
     const handleSubmit = async () => {
         await nodeQueries.addNode(title, description, timelineId)
+        // dispatch action to trigger timeline rerender
         dispatch({ type: types.ADD_NODE })
-        
+        // refetch timelines & pass to authState on global context
+        // ensures dashboard thumbnails stay inline with local timeline changes
         const updatedTimelines = await timelineQueries.fetchUserTimelines(author)
         dispatch({
             type: types.REFRESH_TIMELINES,
@@ -29,8 +32,10 @@ const AddNode: React.FC<IAddNodeProps> = ({author, timelineId, fetchTimeline}) =
         <form onSubmit={ async e => {
             e.preventDefault()
             await handleSubmit()
+            // clear form
             setTitle('')
             setDescription('')
+            // trigger reload of timeline
             await fetchTimeline(timelineId)
         } }>
             <div className='form-group'>
@@ -53,7 +58,7 @@ const AddNode: React.FC<IAddNodeProps> = ({author, timelineId, fetchTimeline}) =
                 />
             </div>
 
-            <button type='submit'>ADD</button>
+            <button disabled={ disabled } type='submit'>ADD</button>
         </form>
     )
 }

@@ -13,16 +13,18 @@ interface IAddTimelineProps {
 }
 const AddTimeline: React.FC<IAddTimelineProps> = ({ animate }) => {
     const { dispatch } = useContext(AuthContext)
-
+    // control form inputs & button disabled state
     const [title, setTitle] = useState<string>('')
     const [description, setDescription] = useState<string>('')
     const [disabled, setDisabled] = useState<boolean>(true)
 
+    // only allow form submission if title has been entered
     useEffect(() => {
         if (title !== '') setDisabled(false)
         else setDisabled(true)
-    }, [title])
+    }, [title]) // <-- effect will run every time title input is changed
 
+    // submit form, dispatch ADD_TIMELINE action with payload = return data from API call
     const handleSubmit = async () => {
         const timeline = await timelineQueries.addTimeline(title, description)
         dispatch({
@@ -35,6 +37,7 @@ const AddTimeline: React.FC<IAddTimelineProps> = ({ animate }) => {
         <form className={ `${animate} add-timeline-form` } onSubmit={ async (e: any) => {
             e.preventDefault()
             await handleSubmit()
+            // clear form
             setTitle('')
             setDescription('')
         } }>

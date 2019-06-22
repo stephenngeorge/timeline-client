@@ -15,27 +15,30 @@ import { key_icon } from '../../../assets'
 const LoginForm: React.FC = () => {
 
     const { dispatch } = useContext(AuthContext)
-
+    // control form inputs & button disabled state
     const [username, setUsername] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [disabled, setDisabled] = useState<boolean>(true)
 
+    // handle form progress nodes
     useEffect(() => {
+        // access .timeline-button nodes
         let usernameNode = document.querySelector('#username-node')
         let passwordNode = document.querySelector('#password-node')
         let loginButton = document.querySelector('#login-button')
-
+        // check dom elements exist
         if (usernameNode !== null && passwordNode !== null && loginButton !== null) {
             username === '' ? usernameNode.classList.remove('complete') : usernameNode.classList.add('complete')
             password === '' ? passwordNode.classList.remove('complete') : passwordNode.classList.add('complete')
-
+            // if form is complete, enable button
             if (usernameNode.classList.contains('complete') && passwordNode.classList.contains('complete')) {
                 setDisabled(false)
             }
             else setDisabled(true)
         }
-    }, [username, password])
+    }, [username, password]) // <-- effect will run every time username or password input is changed
 
+    // submit form & set return data to global context
     const handleSubmit = async () => {
         const loginData = await authQueries.login(username, password)
         if (loginData.type === "ERROR") console.log('error', loginData.message)
