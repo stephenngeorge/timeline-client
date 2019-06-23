@@ -41,6 +41,30 @@
     right: 0;
 }
 
+#close
+{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 1rem;
+    height: 1rem;
+
+    opacity: .4;
+
+    transform: rotate(180deg);
+
+    transition: opacity .4s;
+}
+#close:hover
+{
+    cursor: pointer;
+    opacity: 1;
+}
+#close:focus
+{
+    outline: none;
+}
+
 @import './year.css';
 @import './months.css';
 @import './days.css';

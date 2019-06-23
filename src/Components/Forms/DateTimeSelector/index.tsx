@@ -89,7 +89,25 @@ const DateTimeSelector: React.FC<IDateTimeSelectorProps> = ({ timelineId, timeli
     }
 
     return (
-        <div className={`date-time-selector_wrapper`}>
+        <div className='date-time-selector_wrapper'>
+            <img    src={ less_icon }
+                    alt='close date time selector'
+                    id='close'
+                    onClick={
+                        () => {
+                            const selector = document.querySelector('.date-time-selector_wrapper')
+                            if (selector !== null) {
+                                selector.classList.remove('slide-in')
+                                setDashboardProps({
+                                    ...dashboardProps,
+                                    dateTimeSelector: false,
+                                    focusTimelineId: '',
+                                    focusTimelineTitle: ''
+                                })
+                            }
+                        }
+                    }
+            />
             <form className='date-time-selector'>
                 <h3 className='timeline-title'>{ timelineTitle } deadline</h3>
                 <div className='year'>
