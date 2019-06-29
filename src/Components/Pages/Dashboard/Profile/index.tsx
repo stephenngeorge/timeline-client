@@ -1,6 +1,6 @@
 import './profile.css'
 
-import React, { useState } from 'react'
+import React from 'react'
 
 import { IUser } from '../../../../interfaces'
 
@@ -9,17 +9,13 @@ import TimelineThumbnails from '.././TimelineThumbnails'
 import ProfileControls from '../ProfileControls'
 
 const Profile: React.FC<IUser> = ({username, timelines}) => {
-    const [addTimelineForm, setAddTimelineForm] = useState(false)
-
     return (
         <div className='profile'>
             <div className='profile-header'>
                 <h2>{ username }</h2>
-                <ProfileControls setAddTimelineForm={ setAddTimelineForm } addTimelineForm={ addTimelineForm } />
+                <ProfileControls />
             </div>
-            <TimelineThumbnails timelines={ timelines }
-                                addTimelineForm={ addTimelineForm } 
-            />
+            <TimelineThumbnails timelines={ timelines } />
         </div>
     )
 }

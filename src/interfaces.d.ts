@@ -19,7 +19,8 @@ export interface ITimeline {
     tags: string[],
     author: string,
     members: IUser[],
-    deadline?: string
+    deadline?: string,
+    status?: string
 }
 
 export interface IUser {

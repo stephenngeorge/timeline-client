@@ -14,10 +14,9 @@ import { add_deadline_icon_grey } from '../../../../assets'
 
 import { ITimeline } from '../../../../interfaces'
 interface ITimelineThumbnailProps {
-    timelines: ITimeline[],
-    addTimelineForm: boolean
+    timelines: ITimeline[]
 }
-const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm, timelines}) => {
+const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({timelines}) => {
     // access local dashboard context
     // will need to control deadline form toggle
     const { dashboardProps, setDashboardProps } = useContext(DashboardContext)
@@ -54,13 +53,13 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm,
         }
     }
     // determine animation based on props
-    const animate = !!addTimelineForm ? 'appear' : 'disappear'
+    const animate = !!dashboardProps.addTimelineForm ? 'appear' : 'disappear'
     return (
         <ul className='timeline-thumbnails'>
             {
                 // show form when addTimelineForm is true, pass in .appear class
                 // the empty string fallback catches initial render
-                !!addTimelineForm &&
+                !!dashboardProps.addTimelineForm &&
                 <li className={`${animate} form-thumbnail`}>
                     <AddTimeline animate={ animate || '' } />
                 </li>
@@ -74,7 +73,7 @@ const TimelineThumbnails: React.FC<ITimelineThumbnailProps> = ({addTimelineForm,
                                 <Link to={`/timeline/${timeline._id}`} id='timeline-title'>{ timeline.title }</Link>
                                 <p id='timeline-nodes-length'>({ timeline.nodes.length })</p>
                                 {
-                                    timeline.deadline !== undefined &&
+                                    (timeline.deadline !== undefined && timeline.status !== 'COMPLETE') &&
                                     <Countdown deadline={ timeline.deadline } />
                                 }
                                 {
