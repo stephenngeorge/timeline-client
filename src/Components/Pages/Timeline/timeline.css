@@ -1,0 +1,7 @@
+.timeline
+{
+    display: flex;
+    flex-direction: column;
+}
+
+@import './timelineHeader.css';
